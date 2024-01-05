@@ -4,12 +4,12 @@ import './App.css';
 
 function App() {
   return (
-    
+     
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <img src={letras} className="App-letras" alt="Lotería de Manizales" />
-        
+        <h1>RESULTADOS SORTEOS</h1>
         <a
           className="App-link"
           href="https://www.linkedin.com/in/luis-alfonso-gomez-trujillo/"
@@ -20,6 +20,7 @@ function App() {
         </a>
       </header>
     </div>
+    
   );
 }
 
