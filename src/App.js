@@ -1,21 +1,22 @@
-import logo from './logo.svg';
+import logo from './assets/moneda-dorado.png';
+import letras from './assets/letras-dorado.png'
 import './App.css';
 
 function App() {
   return (
+    
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+        <img src={letras} className="App-letras" alt="Lotería de Manizales" />
+        
         <a
           className="App-link"
-          href="https://reactjs.org"
+          href="https://www.linkedin.com/in/luis-alfonso-gomez-trujillo/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Implementado por Ingeniero y Desarrollador de Software Luis Alfonso Gómez Trujillo
         </a>
       </header>
     </div>
