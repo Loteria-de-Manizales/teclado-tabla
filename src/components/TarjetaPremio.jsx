@@ -1,4 +1,4 @@
-export default function TarjetaPremios({ premio }) {
+export default function TarjetaPremio({ premio }) {
   return (
     <div>
         <h1>{premio.premio}</h1>

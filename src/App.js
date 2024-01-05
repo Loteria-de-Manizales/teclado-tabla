@@ -3,7 +3,11 @@ import letras from './assets/letras-dorado.png'
 import './App.css';
 import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
 import Navigation from './components/Navigation'
+import PlanesPage from './pages/PlanesPage';
 import PremiosPage from './pages/PremiosPage';
+import SorteosPage from './pages/SorteosPage';
+import ResultadosPage from './pages/ResultadosPage';
+
 import FormularioResultadosPage from './pages/FormularioResultadosPage';
 
 function App() {
@@ -13,11 +17,14 @@ function App() {
 
     <Navigation/>
     <Routes>
-        <Route path="/" element={<Navigate to="/premios" />} />
-        <Route path="/premios" element={<PremiosPage/>} />
-        <Route path="/ingresar-resultado" element={<FormularioResultadosPage/>} />
         
-    
+        <Route path="/" element={<Navigate to="/premios" />} />
+        <Route path="/planes" element={<PlanesPage/>} />
+        <Route path="/premios" element={<PremiosPage/>} />
+        <Route path="/sorteos" element={<SorteosPage/>} />
+        <Route path="/resultados" element={<ResultadosPage/>} />
+        <Route path="/ingresar-resultado" element={<FormularioResultadosPage/>} />
+            
     </Routes>  
     
     </BrowserRouter> 

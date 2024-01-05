@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { getAllPremios } from "../api/premios.api"
-import TarjetaPremios from "./TarjetaPremios";
+import TarjetaPremio from "./TarjetaPremio";
 
 
 export default function ListaPremios() {
@@ -17,7 +17,7 @@ useEffect(() => {
 
   return (
     <div>{premios.map(premio => (
-        < TarjetaPremios key={premio.id} premio={ premio } />
+        < TarjetaPremio key={premio.id} premio={ premio } />
     ))}</div>
   )
 }
