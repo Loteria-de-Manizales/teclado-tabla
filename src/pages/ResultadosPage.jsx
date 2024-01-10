@@ -1,6 +1,6 @@
-import ListaResultados from "../components/ListaResultados"
+import { ListaResultados } from "../components/ListaResultados"
 
-export default function ResultadosPage() {
+export function ResultadosPage() {
   return (
     <ListaResultados/>
   )

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
+import { createResultado } from "../api/axios/resultados.api";
 
-export default function FormularioResultados() {
+export function FormularioResultados({sorteo, premio}) {
 
     const [entrada, setEntrada] = useState('')
     const [numero, setNumero] = useState()
@@ -11,26 +12,40 @@ export default function FormularioResultados() {
     },[entrada])
     
     const onEntradaChange = (event) => {
-    setEntrada(event.target.value);    
-    
-    };  
+    setEntrada(event.target.value);     
+    };
+
+    const resultado = {
+      "sorteo": sorteo,
+      "premio": premio,
+      "numeros": numero,
+      "serie" : "096"
+    } 
+
+    const handleSubmit =  async (data) => {      
+       
+        const response = await createResultado(resultado)
+        console.log(response)     
+     };
 
   return (
     <>
-    <input 
-        type="text" 
-        placeholder="entrada"
-        value={entrada}
-        onChange={onEntradaChange} 
-    />
-    
-    <textarea 
-        className="numero" 
-        placeholder='resultado'
-        name="resultado" value={numero}
-        onChange={onEntradaChange}
-    /> 
-      <button>Siguiente</button>
+      <form onSubmit={(event) => {event.preventDefault(); handleSubmit();}}>
+        <input 
+            type="text" 
+            placeholder="entrada"
+            value={entrada}
+            onChange={onEntradaChange} 
+        />
+        
+        <textarea 
+            className="numero" 
+            placeholder='resultado'
+            name="resultado" value={numero}
+            onChange={onEntradaChange}
+        /> 
+          <button>Siguiente</button>
+      </form>
     </>
   )
 }

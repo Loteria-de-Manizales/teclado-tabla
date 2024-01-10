@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
-import { getAllPlanes } from "../api/planes.api"
-import TarjetaPlanes from "./TarjetaPlan";
+import { getAllPlanes } from "../api/axios/planes.api"
+import { TarjetaPlan }  from "./TarjetaPlan";
 
 
-export default function ListaPlanes() {
+export function ListaPlanes() {
 
     const [planes, setPlanes] = useState([]); 
 
@@ -17,7 +17,7 @@ useEffect(() => {
 
   return (
     <div>{planes.map(plan => (
-        < TarjetaPlanes key={plan.id} plan={ plan } />
+        < TarjetaPlan key={plan.id} plan={ plan } />
     ))}</div>
   )
 }

@@ -1,4 +1,4 @@
-export default function TarjetaResultado({ resultado }) {
+export function TarjetaResultado({ resultado }) {
   return (
     <div>
         <h1>{resultado.numeros}</h1>

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
-import { getAllSorteos } from "../api/sorteos.api"
-import TarjetaSorteo from "./TarjetaSorteo";
+import { getAllSorteos } from "../api/axios/sorteos.api"
+import { TarjetaSorteo } from "./TarjetaSorteo";
 
 
-export default function ListaSorteos() {
+export function ListaSorteos() {
 
     const [sorteos, setSorteos] = useState([]); 
 

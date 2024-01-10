@@ -1,4 +1,4 @@
-export default function TarjetaPlan({ plan }) {
+export function TarjetaPlan({ plan }) {
   return (
     <div>
         <h1>{plan.titulo}</h1>

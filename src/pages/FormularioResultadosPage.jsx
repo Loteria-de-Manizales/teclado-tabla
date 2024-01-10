@@ -1,7 +1,9 @@
-import FormularioResultados from "../components/FormularioResultados";
+import { FormularioResultados } from "../components/FormularioResultados";
 
-export default function FormularioResultadosPage() {
+export function FormularioResultadosPage() {
+  
+  
   return (
-   <FormularioResultados />
+   <FormularioResultados sorteo={1} premio={2} />
   )
 }

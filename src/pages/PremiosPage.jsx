@@ -1,6 +1,6 @@
-import ListaPremios from "../components/ListaPremios"
+import { ListaPremios } from "../components/ListaPremios"
 
-export default function PremiosPage() {
+export function PremiosPage() {
   return (
     <ListaPremios/>
   )

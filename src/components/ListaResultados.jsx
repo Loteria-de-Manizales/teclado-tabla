@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
-import { getAllResultados } from "../api/resultados.api"
-import TarjetaResultado from "./TarjetaResultado";
+import { getAllResultados } from "../api/axios/resultados.api"
+import { TarjetaResultado } from "./TarjetaResultado";
 
 
-export default function ListaPlanes() {
+export function ListaResultados() {
 
     const [resultados, setResultados] = useState([]); 
 

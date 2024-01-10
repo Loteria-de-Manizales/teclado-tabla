@@ -1,6 +1,6 @@
-import ListaSorteos from "../components/ListaSorteos"
+import { ListaSorteos } from "../components/ListaSorteos"
 
-export default function SorteosPage() {
+export function SorteosPage() {
   return (
     <ListaSorteos/>
   )

@@ -1,6 +1,6 @@
-import ListaPlanes from "../components/ListaPlanes"
+import { ListaPlanes } from "../components/ListaPlanes"
 
-export default function PlanesPage() {
+export function PlanesPage() {
   return (
     <ListaPlanes/>
   )

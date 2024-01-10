@@ -1,14 +1,18 @@
 import { Link } from "react-router-dom"
+import "./Navigation.css"
 
-export default function Navigation() {
+export  function Navigation() {
   return (
     <div>
-        <Link to="/planes"><h1>Planes Lotería de Manizales</h1></Link>
-        <Link to="/premios"><h1>Premios Lotería de Manizales</h1></Link>
-        <Link to="/sorteos"><h1>Sorteos Lotería de Manizales</h1></Link>
-        <Link to="/resultados"><h1>Resultados Lotería de Manizales</h1></Link>
-        
+      
+        <Link to="/planes"><h1>Planes</h1></Link>
+        <Link to="/premios"><h1>Premios</h1></Link>
+        <Link to="/sorteos"><h1>Sorteos</h1></Link>
+        <Link to="/resultados"><h1>Resultados</h1></Link>
         <Link to="/ingresar-resultado">Ingresar Resultado</Link>
+        
+      
+        
     </div>    
   )
 }

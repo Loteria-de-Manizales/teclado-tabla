@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
-import { getAllPremios } from "../api/premios.api"
-import TarjetaPremio from "./TarjetaPremio";
+import { getAllPremios } from "../api/axios/premios.api"
+import { TarjetaPremio } from "./TarjetaPremio";
 
 
-export default function ListaPremios() {
+export function ListaPremios() {
 
     const [premios, setPremios] = useState([]); 
 
