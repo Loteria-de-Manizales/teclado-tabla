@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
-import { createResultado } from "../api/axios/resultados.api";
+import { createResultado, deleteResultado, updateResultado, getResultado } from "../api/axios/resultados.api";
+import { useNavigate, useParams } from "react-router-dom";
 
 export function FormularioResultados({sorteo, premio}) {
 
     const [entrada, setEntrada] = useState('')
-    const [numero, setNumero] = useState()
+    const [numeros, setNumeros] = useState()
+    const [serie, setSerie] = useState()
 
-    useEffect(()=>{
-        // const {value}=cadena;
-        setNumero(entrada);
-    },[entrada])
+    useEffect(()=>{    
+          setNumeros(entrada.substring(0,4));
+          setSerie(entrada.substring(5,8));          
+        }, [entrada])
     
     const onEntradaChange = (event) => {
     setEntrada(event.target.value);     
@@ -18,15 +20,34 @@ export function FormularioResultados({sorteo, premio}) {
     const resultado = {
       "sorteo": sorteo,
       "premio": premio,
-      "numeros": numero,
-      "serie" : "096"
+      "numeros": numeros,
+      "serie" : serie
     } 
 
+
+   
+    const navigate = useNavigate();
+    const params = useParams()
+    
     const handleSubmit =  async (data) => {      
-       
-        const response = await createResultado(resultado)
-        console.log(response)     
+       if (params.id){
+        updateResultado(params.id, resultado)
+       }else{
+        await createResultado(resultado)
+       }
+       navigate("/resultados")
+
      };
+
+    useEffect(() => {
+       const loadResultado = async() => {
+         if (params.id) {
+           const res = await getResultado(params.id)
+           setEntrada(res.data.numeros+' '+res.data.serie)
+         }
+       }
+       loadResultado()          
+     }, [params])
 
   return (
     <>
@@ -40,12 +61,29 @@ export function FormularioResultados({sorteo, premio}) {
         
         <textarea 
             className="numero" 
-            placeholder='resultado'
-            name="resultado" value={numero}
+            placeholder='numeros'
+            name="resultado" value={numeros}
+            onChange={onEntradaChange}
+        />
+
+        <textarea 
+            className="serie" 
+            placeholder='serie'
+            name="serie" value={serie}
             onChange={onEntradaChange}
         /> 
+
           <button>Siguiente</button>
       </form>
+
+      {params.id && <button onClick={async () => {
+        const accepted= window.confirm('Está seguro?')
+        if (accepted){
+          await deleteResultado(params.id)
+          navigate('/resultados')
+        }
+      }}  > Eliminar </button> }
+      
     </>
   )
 }

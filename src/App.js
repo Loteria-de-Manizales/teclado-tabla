@@ -24,7 +24,7 @@ function App() {
         <Route path="/sorteos" element={<SorteosPage/>} />
         <Route path="/resultados" element={<ResultadosPage/>} />
         <Route path="/ingresar-resultado" element={<FormularioResultadosPage/>} />
-            
+        <Route path="/resultados/:id" element={<FormularioResultadosPage/>} />
     </Routes>  
     
     </BrowserRouter> 
