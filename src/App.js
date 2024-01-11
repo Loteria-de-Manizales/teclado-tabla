@@ -10,6 +10,7 @@ import { ResultadosPage } from './pages/ResultadosPage';
 import { ContadorPremios } from './components/ContadorPremios';
 
 import { FormularioResultadosPage } from './pages/FormularioResultadosPage';
+// import { Resultados } from './components/Resultados';
 
 function App() {
   return (
@@ -29,11 +30,13 @@ function App() {
     
     </BrowserRouter> 
     <ContadorPremios value = {37} />
+    
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <img src={letras} className="App-letras" alt="Lotería de Manizales" />
-        <h1>RESULTADOS SORTEOS</h1>
+        {/* <Resultados /> */}
+        
         <p>
         Sistema desarrollado e implementado por: 
         </p>

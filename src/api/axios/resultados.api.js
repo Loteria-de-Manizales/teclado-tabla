@@ -7,16 +7,16 @@ import axios from "axios"
 // )
 
 export const getAllResultados = () => {
-    return axios.get('http://localhost:8000/api/v1/resultados/')
+    return axios.get('https://resultados-loteria-manizales.onrender.com/api/v1/resultados/')
     //return axios.get('/')
 }
 
-export const getResultado = (id) => axios.get(`http://localhost:8000/api/v1/resultados/${id}`)
+export const getResultado = (id) => axios.get(`https://resultados-loteria-manizales.onrender.com/api/v1/resultados/${id}`)
 
 export const createResultado = (resultado) => {
-    return axios.post('http://localhost:8000/api/v1/resultados/', resultado)
+    return axios.post('https://resultados-loteria-manizales.onrender.com/api/v1/resultados/', resultado)
 }
 
-export const deleteResultado = (id) => axios.delete(`http://localhost:8000/api/v1/resultados/${id}`)
+export const deleteResultado = (id) => axios.delete(`https://resultados-loteria-manizales.onrender.com/api/v1/resultados/${id}`)
 
-export const updateResultado = (id, resultado) => axios.put(`http://localhost:8000/api/v1/resultados/${id}`, resultado)
+export const updateResultado = (id, resultado) => axios.put(`https://resultados-loteria-manizales.onrender.com/api/v1/resultados/${id}`, resultado)
