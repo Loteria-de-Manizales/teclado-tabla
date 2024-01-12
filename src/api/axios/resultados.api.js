@@ -14,7 +14,7 @@ export const getAllResultados = () => {
 export const getResultado = (id) => axios.get(`https://resultados-loteria-manizales.onrender.com/api/v1/resultados/${id}`)
 
 export const createResultado = (resultado) => {
-    return axios.post('https://resultados-loteria-manizales.onrender.com/api/v1/resultados/', resultado)
+    return axios.post(`https://resultados-loteria-manizales.onrender.com/api/v1/resultados/`, resultado)
 }
 
 export const deleteResultado = (id) => axios.delete(`https://resultados-loteria-manizales.onrender.com/api/v1/resultados/${id}`)

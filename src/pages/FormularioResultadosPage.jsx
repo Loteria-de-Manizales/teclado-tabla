@@ -4,6 +4,6 @@ export function FormularioResultadosPage() {
   
   
   return (
-   <FormularioResultados sorteo={1} premio={38} />
+   <FormularioResultados sorteo={1} premio={1} />
   )
 }

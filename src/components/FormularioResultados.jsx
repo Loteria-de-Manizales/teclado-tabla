@@ -59,7 +59,7 @@ export function FormularioResultados({sorteo, premio}) {
             onChange={onEntradaChange} 
         />
         
-        {/* <textarea 
+        <textarea 
             className="numero" 
             placeholder='numeros'
             name="resultado" value={numeros}
@@ -71,7 +71,7 @@ export function FormularioResultados({sorteo, premio}) {
             placeholder='serie'
             name="serie" value={serie}
             onChange={onEntradaChange}
-        />  */}
+        />
 
         <h1><span>NÚMEROS : </span>{numeros}</h1>
         <h1><span>SERIE   : </span>{serie}</h1>
