@@ -5,7 +5,7 @@ export function TarjetaResultado({ resultado }) {
   const navigate = useNavigate() 
   
   return (
-    <div style={{ borderColor:"#ffb71b"}} 
+    <div className="tarjeta"
       onClick={ () => {
         navigate(`/resultados/${resultado.id}`)
       }}

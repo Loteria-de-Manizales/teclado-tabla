@@ -1,15 +1,18 @@
 import axios from "axios"
 
+const BASE_URL='http://localhost:8000/api/v1/'
+//const base_url='https://resultados-loteria-manizales.onrender.com/api/v1/
+
 export const getAllPremios = () => {
-    return axios.get('https://resultados-loteria-manizales.onrender.com/api/v1/premios/')
+    return axios.get(`${BASE_URL}premios/`)
 }
 
-export const getPremio = (id) => axios.get(`https://resultados-loteria-manizales.onrender.com/api/v1/premios/${id}`)
+export const getPremio = (id) => axios.get(`${BASE_URL}premios/${id}`)
 
 export const createPremio = (premio) => {
-    return axios.post('https://resultados-loteria-manizales.onrender.com/api/v1/premios/', premio)
+    return axios.post(`${BASE_URL}premios/`, premio)
 }
 
-export const deletePremio = (id) => axios.delete(`https://resultados-loteria-manizales.onrender.com/api/v1/premios/${id}`)
+export const deletePremio = (id) => axios.delete(`${BASE_URL}premios//${id}`)
 
-export const updatePremio = (id, premio) => axios.put(`https://resultados-loteria-manizales.onrender.com/api/v1/premios/${id}`, premio)
+export const updatePremio = (id, premio) => axios.put(`${BASE_URL}premios/${id}`, premio)

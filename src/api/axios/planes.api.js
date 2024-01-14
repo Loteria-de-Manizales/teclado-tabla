@@ -1,16 +1,18 @@
 import axios from "axios"
 
-export const getAllPlanes = () => {
-    //('http://localhost:8000/api/v1/planes/')
-    return axios.get('https://resultados-loteria-manizales.onrender.com/api/v1/planes/')
+const BASE_URL='http://localhost:8000/api/v1/'
+//const base_url='https://resultados-loteria-manizales.onrender.com/api/v1/'
+
+export const getAllPlanes = () => {  
+    return axios.get(`${BASE_URL}planes/`)
 }
 
-export const getPlan = (id) => axios.get(`https://resultados-loteria-manizales.onrender.com/api/v1/planes/${id}`)
+export const getPlan = (id) => axios.get(`${BASE_URL}planes/${id}`)
 
 export const createPlan = (plan) => {
-    return axios.post('https://resultados-loteria-manizales.onrender.com/api/v1/planes/', plan)
+    return axios.post(`${BASE_URL}planes/`, plan)
 }
 
-export const deletePlan = (id) => axios.delete(`https://resultados-loteria-manizales.onrender.com/api/v1/planes/${id}`)
+export const deletePlan = (id) => axios.delete(`${BASE_URL}planes/${id}`)
 
-export const updatePlan = (id, plan) => axios.put(`https://resultados-loteria-manizales.onrender.com/api/v1/planes/${id}`, plan)
+export const updatePlan = (id, plan) => axios.put(`${BASE_URL}planes/${id}`, plan)
