@@ -1,28 +1,41 @@
 import logo from './assets/moneda-dorado.png';
 import letras from './assets/letras-dorado.png'
 import './AppResultados.css';
-import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
-import { Navigation } from './components/Navigation'
-import { PlanesPage } from './pages/PlanesPage';
-import { PremiosPage } from './pages/PremiosPage';
-import { SorteosPage } from './pages/SorteosPage';
-import { ResultadosPage } from './pages/ResultadosPage';
-import { ResultadoPage } from './pages/ResultadoPage';
-// import { ContadorPremios } from './components/ContadorPremios';
-import { useState } from 'react';
 
-import { FormularioResultadosPage } from './pages/FormularioResultadosPage';
-import { AgregarResultado } from './components/AgregarResultado';
-import { ListaPlanes } from './components/ListaPlanes';
-import { ListaPremios } from './components/ListaPremios';
-// import { ListaResultados } from './components/ListaResultados';
-// import { Resultados } from './components/Resultados';
-import { TarjetaPremio } from './components/TarjetaPremio';
+import {BrowserRouter} from 'react-router-dom'
+import { Navigation } from './components/Navigation'
+
+import { ContadorPremios } from './components/ContadorPremios';
+import { TarjetaPremio } from "./components/TarjetaPremio";
+
+
+import { getAllPremios } from './api/axios/premios.api';
+import { useState, useEffect } from 'react';
+import { AppRoutes } from './routes';
 
 export function AppResultados() {
+
+  const [totalPremios, setTotalPremios]=useState(0);
+  const [contador, setContador] = useState(totalPremios);
+  const [premios, setPremios]=useState([]);
+ // const [isLoading, setIsLoading]=useState(false);
+
+  useEffect(() => {
+    CargarListaPremios();
+  }, []);
+ 
+  async function CargarListaPremios() {
+    //setIsLoading(true);
+    const response = await getAllPremios();
+    //console.log(response.data)
+    setPremios(response.data);
+    setTotalPremios(response.data.length);
+    setContador(response.data.length)
+    //setIsLoading(false);
+    //console.log('Total Premios: ', response.data.length);
+  }
   
-  
-  const [contador, setContador] = useState('');
+  //const [contador, setContador] = useState('');
   //const [resultados, setResultados] = useState([]);
 
   // const onAgregarResultado = (input) => {
@@ -38,27 +51,27 @@ export function AppResultados() {
   return (
     <>
     <BrowserRouter>
-    <Navigation/>
-    <Routes>
-        
-        <Route path="/" element={<Navigate to="/premios" />} />
-        <Route path="/planes" element={<PlanesPage/>} />
-        <Route path="/premios" element={<PremiosPage/>} />
-        <Route path="/sorteos" element={<SorteosPage/>} />
-        <Route path="/resultados" element={<ResultadosPage/>} />
-        <Route path="/resultado" element={<ResultadoPage/>} />
-        <Route path="/ingresar-resultado" element={<FormularioResultadosPage/>} />
-        <Route path="/agregar-resultado" element={<AgregarResultado/>} />
-        <Route path="/resultados/:id" element={<FormularioResultadosPage/>} />
-    </Routes>  
-    
-    </BrowserRouter> 
+      <Navigation/>
+      <AppRoutes />    
+    </BrowserRouter>
 
+    <ContadorPremios contador={contador} setContador={setContador}/>
+
+    <div>
+      <h1>TOTAL PREMIOS: {totalPremios}</h1>
+    </div>
+
+    <div>
+      <h1>CONTADOR: {contador}</h1>
+    </div>
+    
     <div>{premios.map(premio => (
         < TarjetaPremio key={premio.id} premio={ premio } />
     ))}</div>
-    
-    <ContadorPremios contador={contador} setContador={setContador} premios={premios} setPremios={setPremios}/> 
+
+      
+
+
     {/* <h1>Resultados</h1>
     <AgregarResultado agregarResultado={onAgregarResultado}></AgregarResultado>
     <ol>
