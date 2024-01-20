@@ -1,7 +1,7 @@
 export function TarjetaPremio({ premio }) {
   return (
     <div>
-        <h1>{premio.premio}</h1>
+        <h1>{premio.titulo}</h1>
         <p>{premio.valor}</p>
     </div>
   )

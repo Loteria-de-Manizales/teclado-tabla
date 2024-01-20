@@ -2,7 +2,6 @@ import logo from './assets/moneda-dorado.png';
 import letras from './assets/letras-dorado.png'
 import './AppResultados.css';
 
-import {BrowserRouter} from 'react-router-dom'
 import { Navigation } from './components/Navigation'
 
 import { ContadorPremios } from './components/ContadorPremios';
@@ -50,12 +49,10 @@ export function AppResultados() {
 
   return (
     <>
-    <BrowserRouter>
+    
       <Navigation/>
-      <AppRoutes />    
-    </BrowserRouter>
-
-    <ContadorPremios contador={contador} setContador={setContador}/>
+      <AppRoutes />
+    <ContadorPremios contador={contador} setContador={setContador} premios={premios}/>
 
     <div>
       <h1>TOTAL PREMIOS: {totalPremios}</h1>
