@@ -14,10 +14,12 @@ export const ContadorPremios = ({ contador, setContador, premios }) => {
     return (
     <>       
         <div onClick={handleClick}>
-               
-        {
-          contadorPremio ? contadorPremio.titulo : "PREMIOS"
-        }
+          <h1>
+            {
+            contadorPremio ? contadorPremio.titulo : "PREMIOS"
+            }
+          </h1>
+        
            
         </div>
     </>    
