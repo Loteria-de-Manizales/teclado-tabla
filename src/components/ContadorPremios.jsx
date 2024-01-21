@@ -5,22 +5,21 @@ export const ContadorPremios = ({ contador, setContador, premios }) => {
     }
 
     
-    function encontrarPorContador(premio, indice) {
+    function encontrarPorContador(indice) {
       return indice === contador
     }
     
-    let contadorPremio = premios.find((premio, indice) => encontrarPorContador(premio, indice));
+    let contadorPremio = premios.find((premio, indice) => encontrarPorContador(indice));
     
-    console.log(contadorPremio);
-    
-
     return (
     <>       
-        <button onClick={handleClick}>
+        <div onClick={handleClick}>
                
-         {contador}
+        {
+          contadorPremio ? contadorPremio.titulo : "PREMIOS"
+        }
            
-        </button>
+        </div>
     </>    
   )
 }

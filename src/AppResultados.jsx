@@ -48,11 +48,10 @@ export function AppResultados() {
   // }
 
   return (
-    <>
-    
+    <>    
       <Navigation/>
       <AppRoutes />
-    <ContadorPremios contador={contador} setContador={setContador} premios={premios}/>
+      <ContadorPremios contador={contador} setContador={setContador} premios={premios}/>
 
     <div>
       <h1>TOTAL PREMIOS: {totalPremios}</h1>
@@ -62,9 +61,9 @@ export function AppResultados() {
       <h1>CONTADOR: {contador}</h1>
     </div>
     
-    <div>{premios.map(premio => (
+    {/* <div>{premios.map(premio => (
         < TarjetaPremio key={premio.id} premio={ premio } />
-    ))}</div>
+    ))}</div> */}
 
       
 
