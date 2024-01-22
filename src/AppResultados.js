@@ -5,7 +5,7 @@ import './AppResultados.css';
 import { Navigation } from './components/Navigation'
 
 import { ContadorPremios } from './components/ContadorPremios';
-import { TarjetaPremio } from "./components/TarjetaPremio";
+//import { TarjetaPremio } from "./components/TarjetaPremio";
 
 
 import { getAllPremios } from './api/axios/premios.api';
