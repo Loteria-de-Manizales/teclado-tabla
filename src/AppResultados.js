@@ -11,6 +11,7 @@ import { ContadorPremios } from './components/ContadorPremios';
 import { getAllPremios } from './api/axios/premios.api';
 import { useState, useEffect } from 'react';
 import { AppRoutes } from './routes';
+import { VerResultadosPage } from './pages/VerResultadosPage';
 
 export function AppResultados() {
 
@@ -52,6 +53,7 @@ export function AppResultados() {
       <Navigation/>
       <AppRoutes />
       <ContadorPremios contador={contador} setContador={setContador} premios={premios}/>
+      <VerResultadosPage plan= {"plan"} sorteo = {"sorteo"} premios={premios}/>
 
     <div>
       <h1>TOTAL PREMIOS: {totalPremios}</h1>
