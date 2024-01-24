@@ -17,7 +17,7 @@ useEffect(() => {
 
   return (
     <div>{resultados.map(resultado => (
-        < TarjetaResultado key={resultado.id} resultado={ resultado } />
+        < TarjetaResultado key={resultado.id} resultado={ resultado} />
     ))}</div>
   )
 }

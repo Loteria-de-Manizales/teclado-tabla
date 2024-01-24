@@ -1,81 +1,108 @@
+import { useState, useEffect } from 'react';
+import { NavBar } from './components/NavBar'
+import { AppRoutes } from './routes';
+
+import { ContadorPlanes } from './components/ContadorPlanes';
+import { ContadorSorteos } from './components/ContadorSorteos';
+import { ContadorPremios } from './components/ContadorPremios';
+import { ContadorResultados } from './components/ContadorResultados';
+
+import { getAllPlanes } from './api/axios/planes.api';
+import { getAllSorteos } from './api/axios/sorteos.api';
+import { getAllPremios } from './api/axios/premios.api';
+import { getAllResultados } from './api/axios/resultados.api';
+
 import logo from './assets/moneda-dorado.png';
 import letras from './assets/letras-dorado.png'
 import './AppResultados.css';
 
-import { Navigation } from './components/Navigation'
-
-import { ContadorPremios } from './components/ContadorPremios';
-//import { TarjetaPremio } from "./components/TarjetaPremio";
-
-
-import { getAllPremios } from './api/axios/premios.api';
-import { useState, useEffect } from 'react';
-import { AppRoutes } from './routes';
-import { VerResultadosPage } from './pages/VerResultadosPage';
-
 export function AppResultados() {
 
+  const [totalPlanes, setTotalPlanes]=useState(0);
+  const [contadorPlanes, setContadorPlanes] = useState(totalPlanes);
+  const [planes, setPlanes]=useState([]);
+
+  const [totalSorteos, setTotalSorteos]=useState(0);
+  const [contadorSorteos, setContadorSorteos] = useState(totalSorteos);
+  const [sorteos, setSorteos]=useState([]);
+
   const [totalPremios, setTotalPremios]=useState(0);
-  const [contador, setContador] = useState(totalPremios);
+  const [contadorPremios, setContadorPremios] = useState(totalPremios);
   const [premios, setPremios]=useState([]);
+
+  const [totalResultados, setTotalResultados]=useState(0);
+  const [contadorResultados, setContadorResultados] = useState(totalResultados);
+  const [resultados, setResultados]=useState([]);
  // const [isLoading, setIsLoading]=useState(false);
 
   useEffect(() => {
+    CargarListaPlenes();
+    CargarListaSorteos();
     CargarListaPremios();
+    CargarListaResultados();
   }, []);
- 
+
+  async function CargarListaPlenes() {
+  //   //setIsLoading(true);
+     const response = await getAllPlanes();
+     console.log(response.data)
+     setPlanes(response.data);
+     setTotalPlanes(response.data.length);
+     setContadorPlanes(response.data.length)
+  //   //setIsLoading(false);
+     console.log('Total Planes: ', response.data.length);
+   }
+
+   async function CargarListaSorteos() {
+  //   //setIsLoading(true);
+     const response = await getAllSorteos();
+     console.log(response.data)
+     setSorteos(response.data);
+     setTotalSorteos(response.data.length);
+     setContadorSorteos(response.data.length)
+  //   //setIsLoading(false);
+    console.log('Total Sorteos: ', response.data.length);
+   }
+
   async function CargarListaPremios() {
     //setIsLoading(true);
     const response = await getAllPremios();
     //console.log(response.data)
     setPremios(response.data);
     setTotalPremios(response.data.length);
-    setContador(response.data.length)
+    setContadorPremios(response.data.length)
     //setIsLoading(false);
-    //console.log('Total Premios: ', response.data.length);
+    console.log('Total Premios: ', response.data.length);
   }
+
+  async function CargarListaResultados() {
+    //setIsLoading(true);
+    const response = await getAllResultados();
+    //console.log(response.data)
+    setResultados(response.data);
+    setTotalResultados(response.data.length);
+    setContadorResultados(response.data.length)
+    //setIsLoading(false);
+    console.log('Total Resultados: ', response.data.length);
+  }
+
   
-  //const [contador, setContador] = useState('');
-  //const [resultados, setResultados] = useState([]);
-
-  // const onAgregarResultado = (input) => {
-  //   console.log(input)
-  //   const resultado = {
-  //     id: resultados.length,
-  //     numeros: input,
-  //     serie: '023'
-  //   }
-  //   setResultados([...resultados, resultado])
-  // }
-
   return (
     <>    
-      <Navigation/>
+      <NavBar/>
       <AppRoutes />
-      <ContadorPremios contador={contador} setContador={setContador} premios={premios}/>
-      <VerResultadosPage plan= {"plan"} sorteo = {"sorteo"} premios={premios}/>
+      <ContadorPlanes contador={contadorPlanes} setContador={setContadorPlanes} planes={planes}/>
+      <ContadorSorteos contador={contadorSorteos} setContador={setContadorSorteos} sorteos={sorteos}/>
+      <ContadorPremios contador={contadorPremios} setContador={setContadorPremios} premios={premios}/>
+      <ContadorResultados contador={contadorResultados} setContador={setContadorResultados} resultados={resultados}/>  
 
     <div>
-      <h1>TOTAL PREMIOS: {totalPremios}</h1>
-    </div>
-
-    <div>
-      <h1>CONTADOR: {contador}</h1>
+      <h1>TOTAL PLANES: {totalPlanes} - CONTADOR PLANES: {contadorPlanes}</h1>
+      <h1>TOTAL SORTEOS: {totalSorteos} - CONTADOR SORTEOS: {contadorSorteos}</h1>
+      <h1>TOTAL PREMIOS: {totalPremios} - CONTADOR PREMIOS: {contadorPremios}</h1>
+      <h1>TOTAL RESULTADOS: {totalResultados} - CONTADOR RESULTADOS: {contadorResultados}</h1>
     </div>
     
-    {/* <div>{premios.map(premio => (
-        < TarjetaPremio key={premio.id} premio={ premio } />
-    ))}</div> */}
-
-      
-
-
-    {/* <h1>Resultados</h1>
-    <AgregarResultado agregarResultado={onAgregarResultado}></AgregarResultado>
-    <ol>
-      {resultados.map(item => <li key = {item.id}>numeros={item.numeros} serie={item.serie}</li>  )}
-    </ol> */}
-
 
     <div className="App">
       <header className="App-header">
