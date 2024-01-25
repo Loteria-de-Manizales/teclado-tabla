@@ -6,7 +6,7 @@ export function NavBar() {
         <>
             <nav className="navbar navbar-expand-lg bg-body-tertiary">
                 <div className="container-fluid">
-                    <img src={logo} className="App-logo" alt="logo" height={50} />
+                    {/* <img src={logo} className="App-logo" alt="logo" height={50} /> */}
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -23,7 +23,8 @@ export function NavBar() {
                                 </li>
                             <li className="nav-item">
                                 <Link className="nav-link active" aria-current="page" to="/resultados"><h4>RESULTADOS</h4></Link>
-                            </li>          
+                            </li>
+                                   
                         </ul>
                     </div>
                 </div>

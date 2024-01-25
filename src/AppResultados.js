@@ -15,6 +15,7 @@ import { getAllResultados } from './api/axios/resultados.api';
 import logo from './assets/moneda-dorado.png';
 import letras from './assets/letras-dorado.png'
 import './AppResultados.css';
+//import { UltimoResultado } from './components/UltimoResultado';
 
 export function AppResultados() {
 
@@ -33,19 +34,20 @@ export function AppResultados() {
   const [totalResultados, setTotalResultados]=useState(0);
   const [contadorResultados, setContadorResultados] = useState(totalResultados);
   const [resultados, setResultados]=useState([]);
+  const [ultimoResultado, setUltimoResultado] = useState([])
  // const [isLoading, setIsLoading]=useState(false);
 
   useEffect(() => {
-    CargarListaPlenes();
+    CargarListaPlanes();
     CargarListaSorteos();
     CargarListaPremios();
     CargarListaResultados();
   }, []);
 
-  async function CargarListaPlenes() {
+  async function CargarListaPlanes() {
   //   //setIsLoading(true);
      const response = await getAllPlanes();
-     console.log(response.data)
+     console.log('Planes: ', response.data)
      setPlanes(response.data);
      setTotalPlanes(response.data.length);
      setContadorPlanes(response.data.length)
@@ -56,7 +58,7 @@ export function AppResultados() {
    async function CargarListaSorteos() {
   //   //setIsLoading(true);
      const response = await getAllSorteos();
-     console.log(response.data)
+     console.log('Sorteos: ', response.data)
      setSorteos(response.data);
      setTotalSorteos(response.data.length);
      setContadorSorteos(response.data.length)
@@ -67,7 +69,7 @@ export function AppResultados() {
   async function CargarListaPremios() {
     //setIsLoading(true);
     const response = await getAllPremios();
-    //console.log(response.data)
+    console.log('Premios: ', response.data)
     setPremios(response.data);
     setTotalPremios(response.data.length);
     setContadorPremios(response.data.length)
@@ -78,12 +80,14 @@ export function AppResultados() {
   async function CargarListaResultados() {
     //setIsLoading(true);
     const response = await getAllResultados();
-    //console.log(response.data)
+    console.log('Resultados: ', response.data)
     setResultados(response.data);
     setTotalResultados(response.data.length);
     setContadorResultados(response.data.length)
+    setUltimoResultado(response.data.pop())
     //setIsLoading(false);
     console.log('Total Resultados: ', response.data.length);
+    console.log('Ultimo Resultado: ', `NUMEROS: ${ultimoResultado.numeros} SERIE: ${ultimoResultado.serie} `)
   }
 
   
@@ -91,17 +95,22 @@ export function AppResultados() {
     <>    
       <NavBar/>
       <AppRoutes />
-      <ContadorPlanes contador={contadorPlanes} setContador={setContadorPlanes} planes={planes}/>
+      {/* <ContadorPlanes contador={contadorPlanes} setContador={setContadorPlanes} planes={planes}/>
       <ContadorSorteos contador={contadorSorteos} setContador={setContadorSorteos} sorteos={sorteos}/>
       <ContadorPremios contador={contadorPremios} setContador={setContadorPremios} premios={premios}/>
-      <ContadorResultados contador={contadorResultados} setContador={setContadorResultados} resultados={resultados}/>  
-
-    <div>
+      <ContadorResultados contador={contadorResultados} setContador={setContadorResultados} resultados={resultados}/>   */}
+      <div>
+        <h1>          
+          {`               NUMEROS: ${ultimoResultado.numeros} SERIE: ${ultimoResultado.serie}               `}
+        </h1>
+        
+      </div>
+    {/* <div>
       <h1>TOTAL PLANES: {totalPlanes} - CONTADOR PLANES: {contadorPlanes}</h1>
       <h1>TOTAL SORTEOS: {totalSorteos} - CONTADOR SORTEOS: {contadorSorteos}</h1>
       <h1>TOTAL PREMIOS: {totalPremios} - CONTADOR PREMIOS: {contadorPremios}</h1>
       <h1>TOTAL RESULTADOS: {totalResultados} - CONTADOR RESULTADOS: {contadorResultados}</h1>
-    </div>
+    </div> */}
     
 
     <div className="App">
