@@ -1,7 +1,7 @@
-export const ContadorResultados = ({ contador, setContador, resultados }) => {   
+export const IndiceResultado = ({ IndiceResultado, setIndiceResultado, resultados }) => {   
         
     const handleClick = () => {
-       setContador(contador - 1)       
+       setContador()       
     }
 
     
@@ -16,7 +16,7 @@ export const ContadorResultados = ({ contador, setContador, resultados }) => {
         <div onClick={handleClick}>
           <h1>
             {
-              contadorResultado ? `NUMERO: ${contadorResultado.numeros} SERIE: ${contadorResultado.serie}  ID: ${contadorResultado.id}` : "RESULTADOS"
+            contadorResultado ? contadorResultado.id : "RESULTADOS"
             }
           </h1>
         

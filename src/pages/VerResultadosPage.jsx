@@ -4,14 +4,14 @@
   
    return (
      <>
-       {/*  <h1>{`SECO : \n ${premio}`}</h1> */}
-      <div id="carouselExampleAutoplaying" className="carousel slide" data-bs-ride="carousel">
+       <h1>{`SECO : \n ${premio}`}</h1>
+      {/* <div id="carouselExampleAutoplaying" className="carousel slide" data-bs-ride="carousel">
          <div className="carousel-inner">
             <div className="carousel-item">
               <div>
                 {/* {premios.map(premio => (
                   <TarjetaPremio key={ premio.id } premio={ premio } />
-                ))} */}
+                ))} 
               </div>
              
             </div>
@@ -24,7 +24,7 @@
             <span className="carousel-control-next-icon" aria-hidden="true"></span>
             <span className="visually-hidden">Next</span>
           </button>
-      </div>
+      </div> */}
      </>
    )
  }

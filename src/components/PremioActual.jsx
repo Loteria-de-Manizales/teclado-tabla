@@ -1,4 +1,4 @@
-export const ContadorResultados = ({ contador, setContador, resultados }) => {   
+export const ContadorPremios = ({ contador, setContador, premios }) => {   
         
     const handleClick = () => {
        setContador(contador - 1)       
@@ -9,14 +9,14 @@ export const ContadorResultados = ({ contador, setContador, resultados }) => {
       return indice === contador
     }
     
-    let contadorResultado = resultados.find((resultado, indice) => encontrarPorContador(indice));
+    let contadorPremio = premios.find((premio, indice) => encontrarPorContador(indice));
     
     return (
     <>       
         <div onClick={handleClick}>
           <h1>
             {
-              contadorResultado ? `NUMERO: ${contadorResultado.numeros} SERIE: ${contadorResultado.serie}  ID: ${contadorResultado.id}` : "RESULTADOS"
+            contadorPremio ? contadorPremio.titulo : "PREMIOS"
             }
           </h1>
         
