@@ -16,7 +16,7 @@ export const ContadorResultados = ({ contador, setContador, resultados }) => {
         <div onClick={handleClick}>
           <h1>
             {
-              contadorResultado ? `NUMERO: ${contadorResultado.numeros} SERIE: ${contadorResultado.serie}  ID: ${contadorResultado.id}` : "RESULTADOS"
+              contadorResultado ? `NUMERO: ${contadorResultado.numero} SERIE: ${contadorResultado.serie}  ID: ${contadorResultado.id}` : "RESULTADOS"
             }
           </h1>
         

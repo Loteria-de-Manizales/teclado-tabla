@@ -13,7 +13,6 @@ import { getAllSorteos } from './api/axios/sorteos.api';
 import { getAllPremios } from './api/axios/premios.api';
 import { getAllResultados } from './api/axios/resultados.api';
 
-
 import logo from './assets/moneda-dorado.png';
 import letras from './assets/letras-dorado.png'
 import './AppResultados.css';
@@ -36,9 +35,6 @@ export function AppResultados() {
   const [totalResultados, setTotalResultados] = useState(0);
   const [contadorResultados, setContadorResultados] = useState(totalResultados);
   const [resultados, setResultados] = useState([]);
-
- // const [numeros, setNumeros] = useState('????');
- // const [serie, setSerie] = useState('???');
 
   const [ultimoResultado, setUltimoResultado] = useState()
   // const [isLoading, setIsLoading]=useState(false);
@@ -95,8 +91,6 @@ export function AppResultados() {
      console.log('Total Resultados: ', response.data.length);    
    }
 
-
- 
   return (
     <>
       <NavBar />
@@ -114,10 +108,7 @@ export function AppResultados() {
         <h1>TOTAL PREMIOS: {totalPremios} - CONTADOR PREMIOS: {contadorPremios}</h1>
         <h1>TOTAL RESULTADOS: {totalResultados} - CONTADOR RESULTADOS: {contadorResultados}</h1>
       </div>
-
       
-    
-
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />

@@ -5,11 +5,11 @@ import { useNavigate, useParams } from "react-router-dom";
 export function FormularioResultados({sorteo, premio}) {
 
     const [entrada, setEntrada] = useState('')
-    const [numeros, setNumeros] = useState()
+    const [numero, setNumero] = useState()
     const [serie, setSerie] = useState()
 
     useEffect(()=>{    
-          setNumeros(entrada.substring(0,4));
+          setNumero(entrada.substring(0,4));
           setSerie(entrada.substring(5,8));          
         }, [entrada])
     
@@ -20,12 +20,10 @@ export function FormularioResultados({sorteo, premio}) {
     const resultado = {
       "sorteo": sorteo,
       "premio": premio,
-      "numeros": numeros,
+      "numero": numero,
       "serie" : serie
     } 
 
-
-   
     const navigate = useNavigate();
     const params = useParams()
     
@@ -43,7 +41,7 @@ export function FormularioResultados({sorteo, premio}) {
        const loadResultado = async() => {
          if (params.id) {
            const res = await getResultado(params.id)
-           setEntrada(res.data.numeros+' '+res.data.serie)
+           setEntrada(res.data.numero+' '+res.data.serie)
          }
        }
        loadResultado()          
@@ -61,8 +59,8 @@ export function FormularioResultados({sorteo, premio}) {
         
         <textarea 
             className="numero" 
-            placeholder='numeros'
-            name="resultado" value={numeros}
+            placeholder='numero'
+            name="resultado" value={numero}
             onChange={onEntradaChange}
         />
 
@@ -73,7 +71,7 @@ export function FormularioResultados({sorteo, premio}) {
             onChange={onEntradaChange}
         />
 
-        <h1><span>NÚMEROS : </span>{numeros}</h1>
+        <h1><span>NÚMEROS : </span>{numero}</h1>
         <h1><span>SERIE   : </span>{serie}</h1>
 
           <button>Siguiente</button>

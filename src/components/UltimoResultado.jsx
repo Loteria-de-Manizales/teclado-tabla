@@ -27,7 +27,7 @@ export const UltimoResultado = ({ ultimoResultado, setUltimoResultado }) => {
                     <div className="carousel-item active">
                         <h1>
                             {
-                                ultimoResultado ? `NUMEROS: ${ultimoResultado.numeros} SERIE: ${ultimoResultado.serie}` : "RESULTADOS"
+                                ultimoResultado ? `NUMEROS: ${ultimoResultado.numero} SERIE: ${ultimoResultado.serie}` : "RESULTADOS"
                             }
                         </h1>
 
