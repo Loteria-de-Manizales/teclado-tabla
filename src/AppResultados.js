@@ -6,7 +6,8 @@ import { ContadorPlanes } from './components/ContadorPlanes';
 import { ContadorSorteos } from './components/ContadorSorteos';
 import { ContadorPremios } from './components/ContadorPremios';
 import { ContadorResultados } from './components/ContadorResultados';
-import { UltimoResultado } from './components/UltimoResultado';
+//import { UltimoResultado } from './components/UltimoResultado';
+import { SiguienteResultado } from './components/SiguienteResultado';
 
 import { getAllPlanes } from './api/axios/planes.api';
 import { getAllSorteos } from './api/axios/sorteos.api';
@@ -36,7 +37,8 @@ export function AppResultados() {
   const [contadorResultados, setContadorResultados] = useState(totalResultados);
   const [resultados, setResultados] = useState([]);
 
-  const [ultimoResultado, setUltimoResultado] = useState()
+  //const [ultimoResultado, setUltimoResultado] = useState()
+  const [siguienteResultado, setSiguineteResultado] = useState()
   // const [isLoading, setIsLoading]=useState(false);
 
   useEffect(() => {
@@ -100,8 +102,8 @@ export function AppResultados() {
       <ContadorSorteos contador={contadorSorteos} setContador={setContadorSorteos} sorteos={sorteos}/>
       <ContadorPremios contador={contadorPremios} setContador={setContadorPremios} premios={premios}/>
       <ContadorResultados contador={contadorResultados} setContador={setContadorResultados} resultados={resultados}/>
-      <UltimoResultado ultimoResultado={ultimoResultado} setUltimoResultado={setUltimoResultado}  resultados={resultados} />
-      
+      {/* <UltimoResultado ultimoResultado={ultimoResultado} setUltimoResultado={setUltimoResultado}  resultados={resultados} /> */}
+      <SiguienteResultado siguienteResultado={siguienteResultado} setSiguienteResultado={setSiguineteResultado} />
       <div>
         <h1>TOTAL PLANES: {totalPlanes} - CONTADOR PLANES: {contadorPlanes}</h1>
         <h1>TOTAL SORTEOS: {totalSorteos} - CONTADOR SORTEOS: {contadorSorteos}</h1>

@@ -1,36 +1,36 @@
-import { useEffect, useState } from "react"
+import { useState, useEffect } from "react"
 import { getAllResultados } from "../api/axios/resultados.api"
 
-export const UltimoResultado = ({ ultimoResultado, setUltimoResultado }) => {
+export const SiguienteResultado = ({ siguienteResultado, setSiguienteResultado }) => {
 
-    const [parciales, setParciales ] = useState([]);
-
+    const [parciales, setParciales] = useState([]);
+    
     const handleClick = () => {
-        setUltimoResultado(parciales[parciales.length-1])       
-     }
-
-    useEffect(() => {
-        const loadParciales = async function () {
-           const res = await getAllResultados();
-           setParciales(res.data)
-           handleClick()
-        }
+        //setContador(contador - 1)
+        
         loadParciales();
-    },[])
+        
+    }
 
 
-   
-
-    //setUltimoResultado(parciales[0])
-
+    useEffect(() => {    
+        setSiguienteResultado(parciales[parciales.length - 1])
+    },[parciales, setSiguienteResultado])
+    
+    
+    const loadParciales = async function () {
+        const res = await getAllResultados();
+        setParciales(res.data)        }
+    
     return (
         <>
+
             <div id="carouselExample" className="carousel slide">
                 <div className="carousel-inner">
                     <div className="carousel-item active">
                         <h1>
                             {
-                                ultimoResultado ? `NUMEROS: ${ultimoResultado.numero} SERIE: ${ultimoResultado.serie}` : "RESULTADOS"
+                                siguienteResultado ? `NUMEROS: ${siguienteResultado.numero} SERIE: ${siguienteResultado.serie}` : "RESULTADOS"
                             }
                         </h1>
 
@@ -46,6 +46,7 @@ export const UltimoResultado = ({ ultimoResultado, setUltimoResultado }) => {
                     <span className="visually-hidden">Next</span>
                 </button>
             </div>
+
         </>
     )
 }
