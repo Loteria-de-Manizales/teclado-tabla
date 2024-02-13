@@ -1,368 +1,128 @@
-import { useEffect, useState } from "react";
-import { createResultado, deleteResultado, updateResultado, getResultado } from "../api/axios/resultados.api";
-import { useNavigate, useParams } from "react-router-dom";
+import { useState } from "react"
+import "./IngresarResultadoForm.css"
 
-export function IngresarResultadoForm({ sorteo, premio }) {
+export function IngresarResultadoForm({sorteo, premio}) {
+  
+ const [balota, setBalota] = useState('?');
 
-  const [entrada, setEntrada] = useState('')
-  const [numero, setNumero] = useState()
-  const [serie, setSerie] = useState()
+ const [posicion1, setPosicion1] = useState('?');
+ const [posicion2, setPosicion2] = useState('?');
+ const [posicion3, setPosicion3] = useState('?');
+ const [posicion4, setPosicion4] = useState('?');
+ const [posicion5, setPosicion5] = useState('??');
+ const [posicion6, setPosicion6] = useState('?');
+ 
 
-  useEffect(() => {
-    setNumero(entrada.substring(0, 4));
-    setSerie(entrada.substring(5, 8));
-  }, [entrada])
+// const [numero, setNumero] = useState()
+ //const [serie, setSerie] = useState()
 
-  const onEntradaChange = (event) => {
-    setEntrada(event.target.value);
-  };
+//  const resultado = {
+//   "sorteo": sorteo,
+//   "premio": premio,
+//   "numero": numero,
+//   "serie" : serie
+// }
 
-  const resultado = {
-    "sorteo": sorteo,
-    "premio": premio,
-    "numeros": numero,
-    "serie": serie
+  const handleInput1Selection = (event) => {
+    setPosicion1(balota)
   }
 
-  const navigate = useNavigate();
-  const params = useParams()
+  const handleInput2Selection = (event) => {
+    setPosicion2(balota)
+  }
 
-  const handleSubmit = async (data) => {
-    if (params.id) {
-      updateResultado(params.id, resultado)
-    } else {
-      await createResultado(resultado)
-    }
-    navigate("/resultados")
+  const handleInput3Selection = (event) => {
+    setPosicion3(balota)
+  }
 
-  };
+  const handleInput4Selection = (event) => {
+    setPosicion4(balota)
+  }
 
-  useEffect(() => {
-    const loadResultado = async () => {
-      if (params.id) {
-        const res = await getResultado(params.id)
-        setEntrada(res.data.numeros + ' ' + res.data.serie)
-      }
-    }
-    loadResultado()
-  }, [params])
+  const handleInput5Selection = (event) => {
+    setPosicion5(balota)
+  }
+
+  const handleInput6Selection = (event) => {
+    setPosicion6(balota)
+  }
+
+ const handleButtonClick = (event) => {
+    setBalota(event.target.value)
+  }
 
   return (
     <>
-      <form onSubmit={(event) => { event.preventDefault(); handleSubmit(); }}>
-        <div class="container text-center">
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6">
-            <div class="col"><button type="button" class="btn btn-primary">0</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">0</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">0</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">0</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">0</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">0</button></div>
+
+      <div className="container custom-container-inputs mt-5">
+        <div className="row">
+
+          <div className="col-2" >
+            <input readOnly={true} name="posicion1" type="text" className="custom-input" maxLength="1" onSelect={handleInput1Selection} onClick={handleButtonClick} value={posicion1}/>
           </div>
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6">
-            <div class="col"><button type="button" class="btn btn-primary">1</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">1</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">1</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">1</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">1</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">1</button></div>
+          <div className="col-2" >
+            <input readOnly={true} name="posicion2" type="text" className="custom-input" maxLength="1" onSelect={handleInput2Selection} onClick={handleButtonClick} value={posicion2}/>
           </div>
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6">
-            <div class="col"><button type="button" class="btn btn-primary">2</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">2</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">2</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">2</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">2</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">2</button></div>
+          <div className="col-2" >
+            <input readOnly={true} name="posicion3" type="text" className="custom-input" maxLength="1" onSelect={handleInput3Selection} onClick={handleButtonClick} value={posicion3}/>
           </div>
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6">
-            <div class="col"><button type="button" class="btn btn-primary">3</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">3</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">3</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">3</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">3</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">3</button></div>
+          <div className="col-2" >
+            <input readOnly={true} name="posicion4" type="text" className="custom-input" maxLength="1" onSelect={handleInput4Selection} onClick={handleButtonClick} value={posicion4}/>
           </div>
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6">
-            <div class="col"><button type="button" class="btn btn-primary">4</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">4</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">4</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">4</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">4</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">4</button></div>
+          <div  className="col-2" >
+            <input readOnly={true} name="posicion5" type="text" className="custom-input" maxLength="2" onSelect={handleInput5Selection} onClick={handleButtonClick} value={posicion5}/>
           </div>
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6">
-            <div class="col"><button type="button" class="btn btn-primary">5</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">5</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">5</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">5</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">5</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">5</button></div>
+          <div name="posicion6" className="col-2" >
+            <input readOnly={true} name="posicion6" type="text" className="custom-input" maxLength="1" onSelect={handleInput6Selection} onClick={handleButtonClick} value={posicion6}/>
           </div>
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6">
-            <div class="col"><button type="button" class="btn btn-primary">6</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">6</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">6</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">6</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">6</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">6</button></div>
+        </div>
+      </div>
+
+      <div className="container custom-container-buttons mt-5">
+        <div className="row">
+
+          <div className="col-4 col-md-4 d-flex justify-content-center">
+            <button type="button" className="btn btn-square" onClick={handleButtonClick} value={7}>7</button>
           </div>
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6">
-            <div class="col"><button type="button" class="btn btn-primary">7</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">7</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">7</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">7</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">7</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">7</button></div>
+          <div className="col-4 col-md-4 d-flex justify-content-center">
+            <button type="button" className="btn btn-square" onClick={handleButtonClick} value={8}>8</button>
           </div>
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6">
-            <div class="col"><button type="button" class="btn btn-primary">8</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">8</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">8</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">8</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">8</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">8</button></div>
-          </div>
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6">
-            <div class="col"><button type="button" class="btn btn-primary">9</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">9</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">9</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">9</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">9</button></div>
-            <div class="col"><button type="button" class="btn btn-primary">9</button></div>
-          </div>
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6">
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"><button type="button" class="btn btn-primary">10</button></div>
-            <div class="col"></div>
-          </div>
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6">
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"><button type="button" class="btn btn-primary">11</button></div>
-            <div class="col"></div>
-          </div>
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6">
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"><button type="button" class="btn btn-primary">12</button></div>
-            <div class="col"></div>
-          </div>
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6">
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"><button type="button" class="btn btn-primary">13</button></div>
-            <div class="col"></div>
-          </div>
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6">
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"><button type="button" class="btn btn-primary">14</button></div>
-            <div class="col"></div>
-          </div>
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6">
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"><button type="button" class="btn btn-primary">15</button></div>
-            <div class="col"></div>
-          </div>
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6">
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"><button type="button" class="btn btn-primary">16</button></div>
-            <div class="col"></div>
+          <div className="col-4 col-md-4 d-flex justify-content-center">
+            <button type="button" className="btn btn-square" onClick={handleButtonClick} value={9}>9</button>
           </div>
 
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6">
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"><button type="button" class="btn btn-primary">17</button></div>
-            <div class="col"></div>
+          <div className="col-4 col-md-4 d-flex justify-content-center">
+            <button type="button" className="btn btn-square" onClick={handleButtonClick} value={4}>4</button>
           </div>
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6">
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"><button type="button" class="btn btn-primary">18</button></div>
-            <div class="col"></div>
+          <div className="col-4 col-md-4 d-flex justify-content-center">
+            <button type="button" className="btn btn-square" onClick={handleButtonClick} value={5}>5</button>
           </div>
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6">
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"><button type="button" class="btn btn-primary">19</button></div>
-            <div class="col"></div>
+          <div className="col-4 col-md-4 d-flex justify-content-center">
+            <button type="button" className="btn btn-square" onClick={handleButtonClick} value={6}>6</button>
           </div>
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6">
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"><button type="button" class="btn btn-primary">20</button></div>
-            <div class="col"></div>
+
+          <div className="col-4 col-md-4 d-flex justify-content-center">
+            <button type="button" className="btn btn-square" onClick={handleButtonClick} value={1}>1</button>
           </div>
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6">
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"><button type="button" class="btn btn-primary">21</button></div>
-            <div class="col"></div>
+          <div className="col-4 col-md-4 d-flex justify-content-center">
+            <button type="button" className="btn btn-square" onClick={handleButtonClick} value={2}>2</button>
           </div>
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6">
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"><button type="button" class="btn btn-primary">22</button></div>
-            <div class="col"></div>
+          <div className="col-4 col-md-4 d-flex justify-content-center">
+            <button type="button" className="btn btn-square" onClick={handleButtonClick} value={3}>3</button>
           </div>
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6">
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"><button type="button" class="btn btn-primary">23</button></div>
-            <div class="col"></div>
+
+          <div className="col-4 col-md-4 d-flex justify-content-center">
+            <button type="button" className="btn btn-square" onClick={handleButtonClick}>RES</button>
           </div>
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6">
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"><button type="button" class="btn btn-primary">24</button></div>
-            <div class="col"></div>
+          <div className="col-4 col-md-4 d-flex justify-content-center">
+            <button type="button" className="btn btn-square" onClick={handleButtonClick} value={0}>0</button>
           </div>
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6">
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"><button type="button" class="btn btn-primary">25</button></div>
-            <div class="col"></div>
-          </div>
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6">
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"><button type="button" class="btn btn-primary">26</button></div>
-            <div class="col"></div>
-          </div>
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6">
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"><button type="button" class="btn btn-primary">27</button></div>
-            <div class="col"></div>
-          </div>
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6">
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"><button type="button" class="btn btn-primary">28</button></div>
-            <div class="col"></div>
-          </div>
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6">
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"><button type="button" class="btn btn-primary">29</button></div>
-            <div class="col"></div>
-          </div>
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6">
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"><button type="button" class="btn btn-primary">30</button></div>
-            <div class="col"></div>
-          </div>
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6">
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"><button type="button" class="btn btn-primary">31</button></div>
-            <div class="col"></div>
-          </div>
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6">
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"><button type="button" class="btn btn-primary">32</button></div>
-            <div class="col"></div>
-          </div>
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6">
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"><button type="button" class="btn btn-primary">33</button></div>
-            <div class="col"></div>
-          </div>
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6">
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"><button type="button" class="btn btn-primary">34</button></div>
-            <div class="col"></div>
+          <div className="col-4 col-md-4 d-flex justify-content-center">
+            <button type="button" className="btn btn-square" onClick={handleButtonClick}>ENV</button>
           </div>
 
         </div>
-        <textarea
-          className="numero"
-          placeholder='numero'
-          name="resultado" value={numero}
-          onChange={onEntradaChange}
-        />
-
-        <textarea
-          className="serie"
-          placeholder='serie'
-          name="serie" value={serie}
-          onChange={onEntradaChange}
-        />
-
-
-        <h1><span>NÚMEROS : </span>{numero}</h1>
-        <h1><span>SERIE   : </span>{serie}</h1>
-
-        <button>Siguiente</button>
-      </form>
-
-      {params.id && <button onClick={async () => {
-        const accepted = window.confirm('Está seguro?')
-        if (accepted) {
-          await deleteResultado(params.id)
-          navigate('/resultados')
-        }
-      }}  > Eliminar </button>}
-
+      </div>
     </>
   )
 }
