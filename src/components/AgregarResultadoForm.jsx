@@ -42,6 +42,7 @@ export const AgregarResultadoForm = () => {
                         onFocus={() => setSelectedInput(index)}
                         maxLength={2}
                         className="custom-input"
+                        readOnly={true}
                     />
                 </div>
             ))}
