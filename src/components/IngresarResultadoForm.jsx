@@ -1,9 +1,10 @@
-import { useState } from "react"
+import { useState} from "react"
 import "./IngresarResultadoForm.css"
 
 export function IngresarResultadoForm({sorteo, premio}) {
   
- const [balota, setBalota] = useState('?');
+ const [unidad, setUnidad] = useState('?');
+ const [decena, setDecena] = useState('?');
 
  const [posicion1, setPosicion1] = useState('?');
  const [posicion2, setPosicion2] = useState('?');
@@ -24,31 +25,31 @@ export function IngresarResultadoForm({sorteo, premio}) {
 // }
 
   const handleInput1Selection = (event) => {
-    setPosicion1(balota)
+    setPosicion1(unidad)
   }
 
   const handleInput2Selection = (event) => {
-    setPosicion2(balota)
+    setPosicion2(unidad)
   }
 
   const handleInput3Selection = (event) => {
-    setPosicion3(balota)
+    setPosicion3(unidad)
   }
 
   const handleInput4Selection = (event) => {
-    setPosicion4(balota)
+    setPosicion4(unidad)
   }
 
   const handleInput5Selection = (event) => {
-    setPosicion5(balota)
+    setPosicion5(unidad)
   }
 
   const handleInput6Selection = (event) => {
-    setPosicion6(balota)
+    setPosicion6(unidad)
   }
 
  const handleButtonClick = (event) => {
-    setBalota(event.target.value)
+    setUnidad(event.target.value)
   }
 
   return (

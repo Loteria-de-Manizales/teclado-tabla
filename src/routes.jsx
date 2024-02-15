@@ -4,8 +4,8 @@ import { PremiosPage } from './pages/PremiosPage';
 import { SorteosPage } from './pages/SorteosPage';
 import { ResultadosPage } from './pages/ResultadosPage';
 import { FormularioResultadosPage } from './pages/FormularioResultadosPage';
-//import { AgregarResultado } from './components/AgregarResultado';
-import { IngresarResultadoForm } from './components/IngresarResultadoForm';
+import { AgregarResultadoForm } from './components/AgregarResultadoForm';
+//import { IngresarResultadoForm } from './components/IngresarResultadoForm';
 
 export const AppRoutes = () => (
     <Routes>        
@@ -14,8 +14,7 @@ export const AppRoutes = () => (
         <Route path="/sorteos" element={<SorteosPage/>} />
         <Route path="/premios" element={<PremiosPage/>} />
         <Route path="/resultados" element={<ResultadosPage/>} />
-        <Route path="/ingresar-resultado" element={<FormularioResultadosPage/>} />
-        <Route path="/agregar-resultado" element={<IngresarResultadoForm/>} />
+        <Route path="/agregar-resultado" element={< AgregarResultadoForm/>} />
         <Route path="/resultados/:id" element={<FormularioResultadosPage/>} />
     </Routes>      
 
