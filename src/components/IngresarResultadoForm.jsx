@@ -1,56 +1,44 @@
 import { useState} from "react"
 import "./IngresarResultadoForm.css"
 
-export function IngresarResultadoForm({sorteo, premio}) {
-  
- const [unidad, setUnidad] = useState('?');
- const [decena, setDecena] = useState('?');
-
- const [posicion1, setPosicion1] = useState('?');
- const [posicion2, setPosicion2] = useState('?');
- const [posicion3, setPosicion3] = useState('?');
- const [posicion4, setPosicion4] = useState('?');
- const [posicion5, setPosicion5] = useState('??');
- const [posicion6, setPosicion6] = useState('?');
+export const IngresarResultadoForm = () => {
  
+const [selectedInput, setSelectedInput] = useState(null);
+const [inputValues, setInputValues] = useState(Array(6).fill(''));
 
-// const [numero, setNumero] = useState()
- //const [serie, setSerie] = useState()
 
-//  const resultado = {
-//   "sorteo": sorteo,
-//   "premio": premio,
-//   "numero": numero,
-//   "serie" : serie
-// }
+const [numero, setNumero] = useState()
+const [serie, setSerie] = useState()
 
-  const handleInput1Selection = (event) => {
-    setPosicion1(unidad)
-  }
+const handleButtonClick = (digit) => {
+  console.log("Digit : ", digit)
+  console.log("SelectedInput : ", selectedInput )
+  console.log("InputValues: ", inputValues)
+  
+   if (selectedInput !== null) {
+    
+       const updatedValues = [...inputValues];
 
-  const handleInput2Selection = (event) => {
-    setPosicion2(unidad)
-  }
+       if (selectedInput == 4){
+        updatedValues[selectedInput] += digit;
+       }
+       else{
+        updatedValues[selectedInput] = digit;
+       } 
+       
+       setInputValues(updatedValues);
+       console.log("updatedValues: ", updatedValues)
+   }
+};
 
-  const handleInput3Selection = (event) => {
-    setPosicion3(unidad)
-  }
+// const resultado = {
+//    "sorteo": sorteo,
+//    "premio": premio,
+//    "numero": numero,
+//    "serie" : serie
+//  }
 
-  const handleInput4Selection = (event) => {
-    setPosicion4(unidad)
-  }
-
-  const handleInput5Selection = (event) => {
-    setPosicion5(unidad)
-  }
-
-  const handleInput6Selection = (event) => {
-    setPosicion6(unidad)
-  }
-
- const handleButtonClick = (event) => {
-    setUnidad(event.target.value)
-  }
+ 
 
   return (
     <>
@@ -58,24 +46,21 @@ export function IngresarResultadoForm({sorteo, premio}) {
       <div className="container custom-container-inputs mt-5">
         <div className="row">
 
-          <div className="col-2" >
-            <input readOnly={true} name="posicion1" type="text" className="custom-input" maxLength="1" onSelect={handleInput1Selection} onClick={handleButtonClick} value={posicion1}/>
-          </div>
-          <div className="col-2" >
-            <input readOnly={true} name="posicion2" type="text" className="custom-input" maxLength="1" onSelect={handleInput2Selection} onClick={handleButtonClick} value={posicion2}/>
-          </div>
-          <div className="col-2" >
-            <input readOnly={true} name="posicion3" type="text" className="custom-input" maxLength="1" onSelect={handleInput3Selection} onClick={handleButtonClick} value={posicion3}/>
-          </div>
-          <div className="col-2" >
-            <input readOnly={true} name="posicion4" type="text" className="custom-input" maxLength="1" onSelect={handleInput4Selection} onClick={handleButtonClick} value={posicion4}/>
-          </div>
-          <div  className="col-2" >
-            <input readOnly={true} name="posicion5" type="text" className="custom-input" maxLength="2" onSelect={handleInput5Selection} onClick={handleButtonClick} value={posicion5}/>
-          </div>
-          <div name="posicion6" className="col-2" >
-            <input readOnly={true} name="posicion6" type="text" className="custom-input" maxLength="1" onSelect={handleInput6Selection} onClick={handleButtonClick} value={posicion6}/>
-          </div>
+          
+            {inputValues.map((value, index) => (
+                    <div key={index} className="col-md-2">
+                        <input
+                            type="text"
+                            minLength={1}
+                            maxLength={2}
+                            value={value}
+                            onChange={(e) => setInputValues(e.target.value)}
+                            onFocus={() => setSelectedInput(index)}
+                            className="custom-input"
+                        />
+                    </div>
+                ))}
+          
         </div>
       </div>
 
@@ -83,43 +68,103 @@ export function IngresarResultadoForm({sorteo, premio}) {
         <div className="row">
 
           <div className="col-4 col-md-4 d-flex justify-content-center">
-            <button type="button" className="btn btn-square" onClick={handleButtonClick} value={7}>7</button>
+              <button
+                  className="btn btn-square"
+                  onClick={() => handleButtonClick(7)}
+              >
+                  7
+              </button>                  
           </div>
           <div className="col-4 col-md-4 d-flex justify-content-center">
-            <button type="button" className="btn btn-square" onClick={handleButtonClick} value={8}>8</button>
+          <button
+                  className="btn btn-square"
+                  onClick={() => handleButtonClick(8)}
+              >
+                  8
+              </button>
           </div>
           <div className="col-4 col-md-4 d-flex justify-content-center">
-            <button type="button" className="btn btn-square" onClick={handleButtonClick} value={9}>9</button>
-          </div>
-
-          <div className="col-4 col-md-4 d-flex justify-content-center">
-            <button type="button" className="btn btn-square" onClick={handleButtonClick} value={4}>4</button>
-          </div>
-          <div className="col-4 col-md-4 d-flex justify-content-center">
-            <button type="button" className="btn btn-square" onClick={handleButtonClick} value={5}>5</button>
-          </div>
-          <div className="col-4 col-md-4 d-flex justify-content-center">
-            <button type="button" className="btn btn-square" onClick={handleButtonClick} value={6}>6</button>
-          </div>
-
-          <div className="col-4 col-md-4 d-flex justify-content-center">
-            <button type="button" className="btn btn-square" onClick={handleButtonClick} value={1}>1</button>
-          </div>
-          <div className="col-4 col-md-4 d-flex justify-content-center">
-            <button type="button" className="btn btn-square" onClick={handleButtonClick} value={2}>2</button>
-          </div>
-          <div className="col-4 col-md-4 d-flex justify-content-center">
-            <button type="button" className="btn btn-square" onClick={handleButtonClick} value={3}>3</button>
+          <button
+                  className="btn btn-square"
+                  onClick={() => handleButtonClick(9)}
+              >
+                  9
+              </button>
           </div>
 
           <div className="col-4 col-md-4 d-flex justify-content-center">
-            <button type="button" className="btn btn-square" onClick={handleButtonClick}>RES</button>
+          <button
+                  className="btn btn-square"
+                  onClick={() => handleButtonClick(4)}
+              >
+                  4
+              </button>
           </div>
           <div className="col-4 col-md-4 d-flex justify-content-center">
-            <button type="button" className="btn btn-square" onClick={handleButtonClick} value={0}>0</button>
+          <button
+                  className="btn btn-square"
+                  onClick={() => handleButtonClick(5)}
+              >
+                  5
+              </button>
           </div>
           <div className="col-4 col-md-4 d-flex justify-content-center">
-            <button type="button" className="btn btn-square" onClick={handleButtonClick}>ENV</button>
+          <button
+                  className="btn btn-square"
+                  onClick={() => handleButtonClick(6)}
+              >
+                  6
+              </button>
+          </div>
+
+          <div className="col-4 col-md-4 d-flex justify-content-center">
+          <button
+                  className="btn btn-square"
+                  onClick={() => handleButtonClick(1)}
+              >
+                  1
+              </button>
+          </div>
+          <div className="col-4 col-md-4 d-flex justify-content-center">
+          <button
+                  className="btn btn-square"
+                  onClick={() => handleButtonClick(2)}
+              >
+                  2
+              </button>
+          </div>
+          <div className="col-4 col-md-4 d-flex justify-content-center">
+          <button
+                  className="btn btn-square"
+                  onClick={() => handleButtonClick(3)}
+              >
+                  3
+              </button>
+          </div>
+
+          <div className="col-4 col-md-4 d-flex justify-content-center">
+          <button
+                  className="btn btn-square"
+                  onClick={() => handleButtonClick(0)}
+              >
+                  0
+              </button>
+          </div>
+          <div className="col-4 col-md-4 d-flex justify-content-center">
+          <button
+                  className="btn btn-square"
+                  onClick={() => handleButtonClick(0)}
+              >
+                  0
+              </button>
+          </div>
+          <div className="col-4 col-md-4 d-flex justify-content-center">
+          <button
+                  className="btn btn-square"
+                  onClick={() => handleButtonClick(0)}
+              >
+                  0
+              </button>
           </div>
 
         </div>
