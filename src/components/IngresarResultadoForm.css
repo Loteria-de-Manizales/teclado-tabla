@@ -1,17 +1,30 @@
 .custom-container-buttons {
-    width: 400px;
+    width: 420px;
     background-color: #f0f0f0; /* Personaliza este color */
     padding: 20px;
 }
 
 .custom-container-inputs {
-    width: 400px;
+    width: 420px;
     background-color: #ffb71b; /* Personaliza este color */
     padding: 10px;
 }
 
 .btn-square {
-    width: 2.5em; /* Ajusta para mantener la forma cuadrada */
+    width: 2.75em; /* Ajusta para mantener la forma cuadrada */
+    height: 2.75em; /* Ajusta para mantener la forma cuadrada */
+    font-size: 1.25em; /* Ajusta según la necesidad para el texto */
+    font-weight: bolder;
+    margin: 0.5em; /* Margen estrecho entre botones */
+    background-color: #191f6c;  /* Personaliza este color */
+    color: #f0f0f0; /* Personaliza este color */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-rectangle {
+    width: 5em; /* Ajusta para mantener la forma cuadrada */
     height: 2.5em; /* Ajusta para mantener la forma cuadrada */
     font-size: 1em; /* Ajusta según la necesidad para el texto */
     font-weight: bolder;
@@ -19,10 +32,16 @@
     background-color: #191f6c;  /* Personaliza este color */
     color: #f0f0f0; /* Personaliza este color */
     display: flex;
-    align-items: center;
+    align-items: left;
     justify-content: center;
 }
+
 .btn-square:hover {
+    background-color: #ffb71b; /* Color al pasar el mouse */
+    color: #191f6c;
+}
+
+.btn-rectangle:hover {
     background-color: #ffb71b; /* Color al pasar el mouse */
     color: #191f6c;
 }
@@ -30,11 +49,18 @@
 .custom-input {
     width: 2.5em; /* Ajusta para mantener la forma cuadrada */
     height: 2.5em; /* Ajusta para mantener la forma cuadrada */
-    font-size: 1em; /* Ajusta según la necesidad para el texto */
+    font-size: 1.25em; /* Ajusta según la necesidad para el texto */
     font-weight: bolder;
     text-align: center;
-    margin: 0.1em; /* Margen estrecho entre inputs */
+    margin: 0.01em; /* Margen estrecho entre inputs */
     background-color:  #f0f0f0; /* Personaliza este color de fondo */
     color: #191f6c; /* Personaliza este color de texto */
-    border: none;
+    border: 2px solid #191f6c;
+    border-radius: 2.5em;
+}
+
+.custom-input:hover {
+    background-color: #191f6c; /* Color al pasar el mouse */
+    color: #f0f0f0;
+    border: 2px solid #f0f0f0;
 }

@@ -1,48 +1,81 @@
 import { useState} from "react"
+import { useNavigate } from "react-router-dom";
+import { createResultado } from "../api/axios/resultados.api";
 import "./IngresarResultadoForm.css"
 
 export const IngresarResultadoForm = () => {
+
+const navigate = useNavigate();
  
 const [selectedInput, setSelectedInput] = useState(null);
 const [inputValues, setInputValues] = useState(Array(6).fill(''));
 
 
-const [numero, setNumero] = useState()
-const [serie, setSerie] = useState()
+const [numero, setNumero] = useState('')
+const [serie, setSerie] = useState('')
+
+ let sorteo = 1;
+ let premio = 4;
+// let numero='0303';
+// let serie= '003';
+
+const handleSubmit =  async (data) => { 
+     
+    console.log('inputValues: ', inputValues);
+    const entradas = inputValues.join("");
+    console.log('entradas: ', entradas);
+    setNumero(entradas.substring(0,4));
+    console.log('numero: ', numero);
+    setSerie(entradas.substring(5,8));
+    console.log('serie: ', serie);
+    
+    //console.log('Serie:', serie)
+    //console.log(resultado)
+    // await createResultado(resultado)
+    //console.log(data)
+    navigate("/ingresar-resultado")
+
+  };
 
 const handleButtonClick = (digit) => {
-  console.log("Digit : ", digit)
-  console.log("SelectedInput : ", selectedInput )
-  console.log("InputValues: ", inputValues)
   
    if (selectedInput !== null) {
     
        const updatedValues = [...inputValues];
 
-       if (selectedInput == 4){
-        updatedValues[selectedInput] += digit;
+       if (selectedInput === 4){        
+        if (updatedValues[selectedInput].length < 2){
+            updatedValues[selectedInput] += digit;                
+        }else{
+            updatedValues[selectedInput] = '';
+        }
+         
        }
        else{
-        updatedValues[selectedInput] = digit;
+        if (updatedValues[selectedInput].length < 1){
+            updatedValues[selectedInput] = digit;                
+        }else{
+            updatedValues[selectedInput] = '';
+        }
+    
        } 
        
        setInputValues(updatedValues);
-       console.log("updatedValues: ", updatedValues)
    }
 };
 
-// const resultado = {
-//    "sorteo": sorteo,
-//    "premio": premio,
-//    "numero": numero,
-//    "serie" : serie
-//  }
+const resultado = {
+    "sorteo": sorteo,
+    "premio": premio,
+    "numero": numero,
+    "serie" : serie
+  }
 
  
 
   return (
     <>
-
+        <form onSubmit={(event) => {event.preventDefault(); handleSubmit();}}>
       <div className="container custom-container-inputs mt-5">
         <div className="row">
 
@@ -68,107 +101,105 @@ const handleButtonClick = (digit) => {
         <div className="row">
 
           <div className="col-4 col-md-4 d-flex justify-content-center">
-              <button
-                  className="btn btn-square"
-                  onClick={() => handleButtonClick(7)}
-              >
-                  7
-              </button>                  
+              <input
+                type="button"
+                className="btn btn-square"
+                onClick={() => handleButtonClick(7)}
+                value='7'
+              />        
           </div>
           <div className="col-4 col-md-4 d-flex justify-content-center">
-          <button
-                  className="btn btn-square"
-                  onClick={() => handleButtonClick(8)}
-              >
-                  8
-              </button>
+          <input
+                type="button"
+                className="btn btn-square"
+                onClick={() => handleButtonClick(8)}
+                value='8'
+              />
           </div>
           <div className="col-4 col-md-4 d-flex justify-content-center">
-          <button
-                  className="btn btn-square"
-                  onClick={() => handleButtonClick(9)}
-              >
-                  9
-              </button>
+          <input
+                type="button"
+                className="btn btn-square"
+                onClick={() => handleButtonClick(9)}
+                value='9'
+              />
           </div>
 
           <div className="col-4 col-md-4 d-flex justify-content-center">
-          <button
-                  className="btn btn-square"
-                  onClick={() => handleButtonClick(4)}
-              >
-                  4
-              </button>
+          <input
+                type="button"
+                className="btn btn-square"
+                onClick={() => handleButtonClick(4)}
+                value='4'
+              />
           </div>
           <div className="col-4 col-md-4 d-flex justify-content-center">
-          <button
-                  className="btn btn-square"
-                  onClick={() => handleButtonClick(5)}
-              >
-                  5
-              </button>
+          <input
+                type="button"
+                className="btn btn-square"
+                onClick={() => handleButtonClick(5)}
+                value='5'
+              />
           </div>
           <div className="col-4 col-md-4 d-flex justify-content-center">
-          <button
-                  className="btn btn-square"
-                  onClick={() => handleButtonClick(6)}
-              >
-                  6
-              </button>
+          <input 
+                type="button"
+                className="btn btn-square"
+                onClick={() => handleButtonClick(6)}
+                value='6'
+              />
           </div>
 
           <div className="col-4 col-md-4 d-flex justify-content-center">
-          <button
-                  className="btn btn-square"
-                  onClick={() => handleButtonClick(1)}
-              >
-                  1
-              </button>
+          <input 
+                type="button"
+                className="btn btn-square"
+                onClick={() => handleButtonClick(1)}
+                value='1'
+              />
           </div>
           <div className="col-4 col-md-4 d-flex justify-content-center">
-          <button
-                  className="btn btn-square"
-                  onClick={() => handleButtonClick(2)}
-              >
-                  2
-              </button>
+          <input
+                type="button"
+                className="btn btn-square"
+                onClick={() => handleButtonClick(2)}
+                value='2'
+              />
           </div>
           <div className="col-4 col-md-4 d-flex justify-content-center">
-          <button
-                  className="btn btn-square"
-                  onClick={() => handleButtonClick(3)}
-              >
-                  3
-              </button>
+          <input
+                type="button"
+                className="btn btn-square"
+                onClick={() => handleButtonClick(3)}
+                value='3'
+              />
+    
           </div>
 
           <div className="col-4 col-md-4 d-flex justify-content-center">
-          <button
-                  className="btn btn-square"
-                  onClick={() => handleButtonClick(0)}
-              >
-                  0
-              </button>
+          <input 
+                type="button"
+                className="btn btn-square"
+                onClick={() => handleButtonClick(0)}
+                value='0'
+              />
+    
           </div>
           <div className="col-4 col-md-4 d-flex justify-content-center">
+          
+          </div>
+          <div className="col-4 col-md-2 d-flex justify-content-right">
           <button
-                  className="btn btn-square"
-                  onClick={() => handleButtonClick(0)}
+                  className="btn btn-rectangle"
               >
-                  0
+                  ENVIAR
               </button>
           </div>
-          <div className="col-4 col-md-4 d-flex justify-content-center">
-          <button
-                  className="btn btn-square"
-                  onClick={() => handleButtonClick(0)}
-              >
-                  0
-              </button>
-          </div>
+           
 
         </div>
       </div>
+      </form>
     </>
   )
 }
