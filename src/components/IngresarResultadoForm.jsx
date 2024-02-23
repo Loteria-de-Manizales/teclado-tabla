@@ -83,6 +83,7 @@ const resultado = {
             {inputValues.map((value, index) => (
                     <div key={index} className="col-md-2">
                         <input
+                            readOnly={true}
                             type="text"
                             minLength={1}
                             maxLength={2}
