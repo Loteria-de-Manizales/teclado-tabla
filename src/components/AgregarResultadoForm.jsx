@@ -1,4 +1,4 @@
-import { useState} from "react"
+import { useState, useEffect} from "react"
 import { useNavigate } from "react-router-dom";
 import { createResultado } from "../api/axios/resultados.api";
 import "./AgregarResultadoForm.css"
@@ -9,68 +9,86 @@ const navigate = useNavigate();
  
 const [selectedInput, setSelectedInput] = useState(null);
 const [inputValues, setInputValues] = useState(Array(6).fill(''));
+const [entradas, setEntradas] = useState('')
 
 
 const [numero, setNumero] = useState('')
 const [serie, setSerie] = useState('')
 
- let sorteo = 1;
- let premio = 4;
-// let numero='0303';
-// let serie= '003';
+let sorteo = 1;
+let premio = 4;
 
 const handleSubmit =  async (data) => { 
-     
-  console.log('Numero : ',inputValues.join("").substring(0,4))
-  console.log('Serie : ',inputValues.join("").substring(4,7))
-
-    //console.log('Serie:', serie)
-    //console.log(resultado)
-    // await createResultado(resultado)
-    //console.log(data)
-    navigate("/agregar-resultado")
-
-  };
-
-const handleButtonClick = (digit) => {
+  //const handleSubmit = () =>  {  
+    
   
-   if (selectedInput !== null) {
-    
-       const updatedValues = [...inputValues];
+    await createResultado(resultado)
+    navigate("/agregar-resultado")
+  
+    };
 
-       if (selectedInput === 4){        
-        if (updatedValues[selectedInput].length < 2){
-            updatedValues[selectedInput] += digit;                
-        }else{
-            updatedValues[selectedInput] = '';
-        }
-         
+ useEffect(()=>{
+   setEntradas(inputValues.join(""));    
+   setNumero(entradas.substring(0,4));
+   setSerie(entradas.substring(4,7));      
+ }, [handleSubmit])
+
+ const handleButtonClick = (digit) => {
+  
+  if (selectedInput !== null) {
+   
+      const updatedValues = [...inputValues];
+
+      if (selectedInput === 4){        
+       if (updatedValues[selectedInput].length < 2){
+           updatedValues[selectedInput] += digit;                
+       }else{
+           updatedValues[selectedInput] = '';
        }
-       else{
-        if (updatedValues[selectedInput].length < 1){
-            updatedValues[selectedInput] = digit;                
-        }else{
-            updatedValues[selectedInput] = '';
-        }
-    
-       } 
-       
-       setInputValues(updatedValues);
-   }
+        
+      }
+      else{
+       if (updatedValues[selectedInput].length < 1){
+           updatedValues[selectedInput] = digit;                
+       }else{
+           updatedValues[selectedInput] = '';
+       }
+   
+      } 
+      
+      setInputValues(updatedValues);
+  }
 };
 
 const resultado = {
-    "sorteo": sorteo,
-    "premio": premio,
-    "numero": numero,
-    "serie" : serie
-  }
+  "sorteo": sorteo,
+  "premio": premio,
+  "numero": numero,
+  "serie" : serie
+}
 
- 
+
+
+
+
+
+// useEffect(() => {
+//   const sendResultado = async() => {
+//   const res = await createResultado(resultado)     
+//   }
+//   sendResultado()          
+// }, [handleSubmit])
 
   return (
     <>
-        <form onSubmit={(event) => {event.preventDefault(); handleSubmit();}}>
+      <form onSubmit={(event) => {event.preventDefault(); handleSubmit();}}>
+      <div>
+
+        <h1><span>NÚMEROS : </span>{numero}</h1>
+        <h1><span>SERIE   : </span>{serie}</h1>
+
+      </div>
+     
       <div className="container custom-container-inputs mt-5">
         <div className="row">
 
@@ -78,13 +96,13 @@ const resultado = {
             {inputValues.map((value, index) => (
                     <div key={index} className="col-md-2">
                         <input
+                            readOnly={true}
                             type="text"
-                            minLength={1}
-                            maxLength={2}
                             value={value}
                             onChange={(e) => setInputValues(e.target.value)}
                             onFocus={() => setSelectedInput(index)}
                             className="custom-input"
+                            id={index}
                         />
                     </div>
                 ))}
@@ -181,19 +199,18 @@ const resultado = {
     
           </div>
           <div className="col-4 col-md-4 d-flex justify-content-center">
-          
-          </div>
-          <div className="col-4 col-md-2 d-flex justify-content-right">
-          <button
-                  className="btn btn-rectangle"
-              >
+              <button className="btn btn-rectangle" >
                   ENVIAR
               </button>
+          </div>
+          <div className="col-4 col-md-2 d-flex justify-content-right">
+          
           </div>
            
 
         </div>
       </div>
+     
       </form>
     </>
   )

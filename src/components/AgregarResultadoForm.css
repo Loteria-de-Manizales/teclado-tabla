@@ -25,14 +25,14 @@
 
 .btn-rectangle {
     width: 5em; /* Ajusta para mantener la forma cuadrada */
-    height: 2.5em; /* Ajusta para mantener la forma cuadrada */
-    font-size: 1em; /* Ajusta según la necesidad para el texto */
+    height: 2.75em; /* Ajusta para mantener la forma cuadrada */
+    font-size: 1.25em; /* Ajusta según la necesidad para el texto */
     font-weight: bolder;
-    margin: 1em; /* Margen estrecho entre botones */
+    margin: 0.5em; /* Margen estrecho entre botones */
     background-color: #191f6c;  /* Personaliza este color */
     color: #f0f0f0; /* Personaliza este color */
     display: flex;
-    align-items: left;
+    align-items: center;
     justify-content: center;
 }
 
