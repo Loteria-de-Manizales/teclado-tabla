@@ -1,0 +1,16 @@
+.navbar {
+    background:  #ffb71b !important;
+    align-items: right;
+    justify-content: right;
+    
+ }
+
+ .container-fluid{
+    background:  #191f6c !important;
+    align-items: right;
+    justify-content: right;
+ }
+
+ .nav-link {
+    color:#ffb71b !important;
+ }

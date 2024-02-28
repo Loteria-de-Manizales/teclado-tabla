@@ -1,0 +1,23 @@
+.carousel {
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-inner{
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-item{
+    font-size: 5em;
+    margin-left: 210px;
+    margin-top: 210px;    
+}
+
+.carousel-control-next-icon{
+    margin-top: 210px; 
+}
+
+.carousel-control-prev-icon{
+    margin-top: 210px;
+}
