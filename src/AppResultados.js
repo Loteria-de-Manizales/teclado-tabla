@@ -37,7 +37,7 @@ export function AppResultados() {
   // const [siguienteResultado, setSiguineteResultado] = useState()
   // const [isLoading, setIsLoading]=useState(false);
 
-  // useEffect(() => {
+  //  useEffect(() => {
   //   CargarListaPlanes();
   //   CargarListaSorteos();
   //   CargarListaPremios();
@@ -74,7 +74,7 @@ export function AppResultados() {
   //   setPremios(response.data);
   //   setTotalPremios(response.data.length);
   //   setContadorPremios(response.data.length);
-  //   //setIsLoading(false);
+     //setIsLoading(false);
   //   console.log('Total Premios: ', response.data.length);
   // }
 
@@ -93,17 +93,17 @@ export function AppResultados() {
       <NavBar />
       <AppRoutes />
 
-      {/* <ContadorPlanes contador={contadorPlanes} setContador={setContadorPlanes} planes={planes}/>
-      <ContadorSorteos contador={contadorSorteos} setContador={setContadorSorteos} sorteos={sorteos}/>
-      <ContadorPremios contador={contadorPremios} setContador={setContadorPremios} premios={premios}/>
-      <ContadorResultados contador={contadorResultados} setContador={setContadorResultados} resultados={resultados}/>
-      <SiguienteResultado siguienteResultado={siguienteResultado} setSiguienteResultado={setSiguineteResultado} />
+      {/* <ContadorPlanes contador={contadorPlanes} setContador={setContadorPlanes} planes={planes}/> */}
+      {/* <ContadorSorteos contador={contadorSorteos} setContador={setContadorSorteos} sorteos={sorteos}/> */}
+      {/* <ContadorPremios contador={contadorPremios} setContador={setContadorPremios} premios={premios}/> */}
+      {/* <ContadorResultados contador={contadorResultados} setContador={setContadorResultados} resultados={resultados}/> */}
+      {/* <SiguienteResultado siguienteResultado={siguienteResultado} setSiguienteResultado={setSiguineteResultado} /> */}
       <div>
-        <h1>TOTAL PLANES: {totalPlanes} - CONTADOR PLANES: {contadorPlanes}</h1>
-        <h1>TOTAL SORTEOS: {totalSorteos} - CONTADOR SORTEOS: {contadorSorteos}</h1>
-        <h1>TOTAL PREMIOS: {totalPremios} - CONTADOR PREMIOS: {contadorPremios}</h1>
-        <h1>TOTAL RESULTADOS: {totalResultados} - CONTADOR RESULTADOS: {contadorResultados}</h1>
-      </div> */}
+        {/* <h1>TOTAL PLANES: {totalPlanes} - CONTADOR PLANES: {contadorPlanes}</h1> */}
+        {/* <h1>TOTAL SORTEOS: {totalSorteos} - CONTADOR SORTEOS: {contadorSorteos}</h1> */}
+        {/* <h1>TOTAL PREMIOS: {totalPremios} - CONTADOR PREMIOS: {contadorPremios}</h1> */}
+        {/* <h1>TOTAL RESULTADOS: {totalResultados} - CONTADOR RESULTADOS: {contadorResultados}</h1> */}
+      </div> 
       
       <div className="App">
         <header className="App-header">

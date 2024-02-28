@@ -15,7 +15,7 @@ export const AgregarResultadoForm = () => {
   const [serie, setSerie] = useState('')
 
   let sorteo = 1;
-  let premio = 37;
+  let premio = 4;
 
   const handleSubmit = async (data) => {
     await createResultado(resultado)
