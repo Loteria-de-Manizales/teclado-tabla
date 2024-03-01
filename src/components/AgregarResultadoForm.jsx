@@ -71,11 +71,11 @@ export const AgregarResultadoForm = () => {
         </div>
 
         <div className="container custom-container-inputs mt-5">
-          <div className="row">
+          <div className="row" >
 
 
             {inputValues.map((value, index) => (
-              <div key={index} className="col-md-2">
+              <div key={index} className="col-md-2" >
                 <input
                   readOnly={true}
                   type="text"

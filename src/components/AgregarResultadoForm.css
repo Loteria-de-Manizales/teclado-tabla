@@ -1,7 +1,7 @@
 .custom-container-buttons {
     width: 420px;
     background-color: #f0f0f0; /* Personaliza este color */
-    padding: 20px;
+    padding: 10px;
 }
 
 .custom-container-inputs {
@@ -71,4 +71,10 @@
     background-color: #191f6c; /* Color al pasar el mouse */
     color: #f0f0f0;
     border: 2px solid #f0f0f0;
+}
+
+.col-md-2 {
+    max-width: 58px;
+    max-height:58px;
+    margin:5px
 }

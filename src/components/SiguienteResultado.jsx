@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { getAllResultados } from "../api/axios/resultados.api"
 import './SiguienteResultado.css'
+import { TarjetaResultado } from "./TarjetaResultado"
 
 export const SiguienteResultado = ({ siguienteResultado, setSiguienteResultado }) => {
 
@@ -24,11 +25,10 @@ export const SiguienteResultado = ({ siguienteResultado, setSiguienteResultado }
         <div id="carouselExample" className="carousel slide">
           <div className="carousel-inner">
             <div className="carousel-item active">
-              
-                {
-                  siguienteResultado ? `NÚMERO: ${siguienteResultado.numero}  SERIE: ${siguienteResultado.serie}` : "RESULTADOS"
-                }
-              
+              {                
+                < TarjetaResultado key={siguienteResultado.id} resultado={ siguienteResultado} />
+              }
+                
             </div>
           </div>
           {/* <button className="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
