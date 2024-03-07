@@ -1,33 +1,52 @@
 import { useState, useEffect } from "react"
 import { getAllResultados } from "../api/axios/resultados.api"
-import './SiguienteResultado.css'
+import { getAllPremios } from "../api/axios/premios.api"
+import './ResultadoEnVivo.css'
 
-export const SiguienteResultado = ({ siguienteResultado, setSiguienteResultado }) => {
+export const ResultadoEnVivo = ({ vivo, setVivo }) => {
 
   const [parciales, setParciales] = useState([]);
+  const [premios, setPremios] = useState([]);
+  const [totalPremios, setTotalPremios] = useState(0);
+  const [contadorPremio, setContadorPremio] = useState(0)  
+
+  useEffect(() => {
+    CargarArrayPremios()
+  }, []);
+
+
+  async function CargarArrayPremios() {
+    //setIsLoading(true);
+    const response = await getAllPremios();
+    console.log('Premios: ', response.data)
+    setPremios(response.data);       
+    setTotalPremios(response.data.length);
+    //setIsLoading(false);   
+  }
 
   const handleClick = () => {
     loadParciales();
+    setContadorPremio(contadorPremio+1)
   }
 
   useEffect(() => {
-      setSiguienteResultado(parciales[parciales.length - 1])
-  }, [parciales, setSiguienteResultado])
+      setVivo(parciales[parciales.length - 1])
+     
+  }, [handleClick])
 
   const loadParciales = async function () {
-    const res = await getAllResultados();
-      setParciales(res.data)
+    const response = await getAllResultados();
+      setParciales(response.data)
   }
 
+ 
     return (
       <>
         <div id="carouselExample" className="carousel slide">
           <div className="carousel-inner">
             <div className="carousel-item active">
-              
-                {
-                  siguienteResultado ? `NÚMERO: ${siguienteResultado.numero} SERIE: ${siguienteResultado.serie}` : "RESULTADOS"
-                }              
+              <span> {contadorPremio ? `PREMIO ${premios[contadorPremio-1].titulo} POR ${premios[contadorPremio-1].valor}` : "PREMIOS"} </span>
+              <span> {vivo ? `NÚMERO: ${vivo.numero} SERIE: ${vivo.serie}` : "RESULTADOS"} </span>              
             </div>
           </div>
           {/* <button className="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
