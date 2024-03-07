@@ -45,8 +45,8 @@ export const ResultadoEnVivo = ({ vivo, setVivo }) => {
         <div id="carouselExample" className="carousel slide">
           <div className="carousel-inner">
             <div className="carousel-item active">
-              <span> {contadorPremio ? `PREMIO ${premios[contadorPremio-1].titulo} POR ${premios[contadorPremio-1].valor}` : "PREMIOS"} </span>
-              <span> {vivo ? `NÚMERO: ${vivo.numero} SERIE: ${vivo.serie}` : "RESULTADOS"} </span>              
+              <h2> {contadorPremio ? `PREMIO ${premios[contadorPremio-1].titulo} POR ${premios[contadorPremio-1].valor}` : "PREMIOS"} </h2>
+              <h1> {vivo ? `NÚMERO: ${vivo.numero} SERIE: ${vivo.serie}` : "RESULTADOS"} </h1>              
             </div>
           </div>
           {/* <button className="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
