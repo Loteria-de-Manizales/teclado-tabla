@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react"
 import { getAllResultados } from "../api/axios/resultados.api"
 import { getAllPremios } from "../api/axios/premios.api"
-import './ResultadoEnVivo.css'
+import './PremioEnVivo.css'
 
-export const ResultadoEnVivo = ({ vivo, setVivo }) => {
+export const PremioEnVivo = ({ vivo, setVivo }) => {
 
   const [parciales, setParciales] = useState([]);
   const [premios, setPremios] = useState([]);
@@ -29,14 +29,9 @@ export const ResultadoEnVivo = ({ vivo, setVivo }) => {
     setContadorPremio(contadorPremio+1)    
   }
 
-  const handleClickPrev = () => {
-    loadParciales();
-    setContadorPremio(contadorPremio-1)    
-  }
-
   useEffect(() => {
       setVivo(parciales[parciales.length - 1])      
-  }, [handleClickNext, handleClickPrev])
+  }, [handleClick])
 
   const loadParciales = async function () {
     const response = await getAllResultados();
@@ -53,10 +48,10 @@ export const ResultadoEnVivo = ({ vivo, setVivo }) => {
               <h1> {vivo ? `NÚMERO: ${vivo.numero} SERIE: ${vivo.serie}` : "RESULTADOS"} </h1>              
             </div>
           </div>
-           <button onClick={handleClickPrev} className="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+          {/* <button className="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
             <span className="carousel-control-prev-icon" aria-hidden="true"></span>
             <span className="visually-hidden">Previous</span>
-          </button>
+          </button> */}
           <button onClick={handleClickNext} className="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
             <span className="carousel-control-next-icon" aria-hidden="true"></span>
             <span className="visually-hidden">Next</span>

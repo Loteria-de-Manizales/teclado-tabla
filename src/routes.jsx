@@ -6,6 +6,7 @@ import { ResultadosPage } from './pages/ResultadosPage';
 import { ResultadoEnVivoPage } from './pages/ResultadoEnVivoPage';
 import { FormularioResultadosPage } from './pages/FormularioResultadosPage';
 import { AgregarResultadoForm } from './components/AgregarResultadoForm';
+import { AgregarSorteoForm } from './components/AgregarSorteoForm';
 // import { IngresarResultadoForm } from './components/IngresarResultadoForm';
 
 export const AppRoutes = () => (
@@ -17,6 +18,7 @@ export const AppRoutes = () => (
         <Route path="/premios" element={<PremiosPage/>} />
         <Route path="/resultados" element={<ResultadosPage/>} />
         <Route path="/agregar-resultado" element={< AgregarResultadoForm/>} />
+        <Route path="/agregar-sorteo" element={< AgregarSorteoForm/>} />
         {/* <Route path="/ingresar-resultado" element={< IngresarResultadoForm/>} /> */}
         <Route path="/resultados/:id" element={<FormularioResultadosPage/>} />
     </Routes>      

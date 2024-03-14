@@ -1,89 +1,85 @@
-// import { useEffect, useState } from "react";
-// import { createSorteo, deleteSorteo, updateSorteo, getSorteo } from "../api/axios/sorteos.api";
-// import { useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { createSorteo, deleteSorteo, updateSorteo, getSorteo } from "../api/axios/sorteos.api";
+import { useNavigate, useParams } from "react-router-dom";
 
-// export function AgregarSorteoForm({plan}) {
+export function AgregarSorteoForm() {
 
-//     const [entrada, setEntrada] = useState('')
-//     const [titulo, setTitulo] = useState()
-//     const [fecha, setFecha] = useState('')
+   const [entrada, setEntrada] = useState('')
+   const [titulo, setTitulo] = useState()
+   const [fecha, setFecha] = useState('')
 
-//     useEffect(()=>{    
-//           setSorteo(entrada);          
-//         }, [entrada])
+   useEffect(()=>{    
+        setTitulo(entrada);          
+    }, [entrada])
     
-//     const onEntradaChange = (event) => {
-//     setEntrada(event.target.value);     
-//     };
+     const onEntradaChange = (event) => {
+     setEntrada(event.target.value);     
+     };
 
-//     const sorteo = {
-//       "titulo": titulo,
-//       "plan": plan,
-//       "fecha": ,
-//       "autoridades" : serie
-//     } 
+     const onFechaChange = (event) => {
+      setFecha(event.target.value);     
+      };
 
-//     const navigate = useNavigate();
-//     const params = useParams()
+     const sorteo = {
+       "titulo": titulo,
+       "plan": '',
+       "fecha": fecha,
+       "autoridades" : ''
+     } 
+
+     const navigate = useNavigate();
+     const params = useParams()
     
-//     const handleSubmit =  async (data) => {      
-//        if (params.id){
-//         updateResultado(params.id, resultado)
-//        }else{
-//         await createResultado(resultado)
-//        }
-//        navigate("/resultados")
+     const handleSubmit =  async (data) => {      
+        if (params.id){
+         updateSorteo(params.id, sorteo)
+        }else{
+         await createSorteo(sorteo)
+        }
+        navigate("/sorteos")
 
-//      };
+      };
 
-//     useEffect(() => {
-//        const loadResultado = async() => {
-//          if (params.id) {
-//            const res = await getResultado(params.id)
-//            setEntrada(res.data.numero+' '+res.data.serie)
-//          }
-//        }
-//        loadResultado()          
-//      }, [params])
+     useEffect(() => {
+        const loadSorteo = async() => {
+          if (params.id) {
+            const res = await getSorteo(params.id)
+            setEntrada(res.data.titulo)
+          }
+        }
+        loadSorteo()          
+      }, [params])
 
-//   return (
-//     <>
-//       <form onSubmit={(event) => {event.preventDefault(); handleSubmit();}}>
-//         <input 
-//             type="text" 
-//             placeholder="entrada"
-//             value={entrada}
-//             onChange={onEntradaChange} 
-//         />
-        
-//         <textarea 
-//             className="numero" 
-//             placeholder='numero'
-//             name="resultado" value={numero}
-//             onChange={onEntradaChange}
-//         />
+   return (
+     <>
+       <form onSubmit={(event) => {event.preventDefault(); handleSubmit();}}>
+         <input 
+             type="text" 
+             placeholder="NÚMERO DE SORTEO"
+             value={entrada}
+             onChange={onEntradaChange} 
+         />
+         <input 
+             type="date" 
+             placeholder="FECHA"
+             value={fecha}
+             onChange={onFechaChange} 
+         />
+         
 
-//         <textarea 
-//             className="serie" 
-//             placeholder='serie'
-//             name="serie" value={serie}
-//             onChange={onEntradaChange}
-//         />
+         <h1><span>TITULO : </span>{titulo}</h1>
+         <h1><span>FECHA   : </span>{fecha}</h1>
+           <button>ENVIAR</button>
+       </form>
 
-//         <h1><span>NÚMEROS : </span>{numero}</h1>
-//         <h1><span>SERIE   : </span>{serie}</h1>
-
-//           <button>Siguiente</button>
-//       </form>
-
-//       {params.id && <button onClick={async () => {
-//         const accepted= window.confirm('Está seguro?')
-//         if (accepted){
-//           await deleteResultado(params.id)
-//           navigate('/resultados')
-//         }
-//       }}  > Eliminar </button> }
+       {params.id && <button onClick={async () => {
+         const accepted= window.confirm('Está seguro?')
+         if (accepted){
+           await deleteSorteo(params.id)
+           navigate('/sorteos')
+         }
+       }}  > Eliminar </button> }
       
-//     </>
-//   )
-// }
+     </>
+   )
+ }
