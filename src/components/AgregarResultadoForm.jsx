@@ -13,7 +13,6 @@ export const AgregarResultadoForm = () => {
 
   const [numero, setNumero] = useState('')
   const [serie, setSerie] = useState('')
-  const [enviado, setEnviado] = useState('')
 
   let sorteo = 1;
   let premio = 37;
@@ -27,7 +26,6 @@ export const AgregarResultadoForm = () => {
     setEntradas(inputValues.join(""));
     setNumero(entradas.substring(0, 4));
     setSerie(entradas.substring(4, 7));
-    setEnviado('Enviado');
   }, [handleSubmit])
 
   const handleButtonClick = (digit) => {
@@ -69,7 +67,6 @@ export const AgregarResultadoForm = () => {
 
           <h1><span>NÚMEROS : </span>{numero}</h1>
           <h1><span>SERIE   : </span>{serie}</h1>
-          <h1><span>{enviado} </span></h1>
 
         </div>
 
@@ -83,7 +80,7 @@ export const AgregarResultadoForm = () => {
                   readOnly={true}
                   type="text"
                   value={value}
-                  onChange={(e) =>{ setInputValues(e.target.value); setEnviado(''}}
+                  onChange={(e) =>setInputValues(e.target.value);}
                   onFocus={() => setSelectedInput(index)}
                   className="custom-input"
                   id={index}
