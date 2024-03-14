@@ -69,7 +69,7 @@ export const AgregarResultadoForm = () => {
 
           <h1><span>NÚMEROS : </span>{numero}</h1>
           <h1><span>SERIE   : </span>{serie}</h1>
-          <h1><span>{enviado}</span></h1>
+          <h1><span>Prueba{enviado} </span></h1>
 
         </div>
 
