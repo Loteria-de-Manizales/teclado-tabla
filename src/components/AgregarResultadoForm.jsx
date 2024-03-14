@@ -73,7 +73,6 @@ export const AgregarResultadoForm = () => {
           <span>{indicePremio}</span>
           <h1><span>NÚMEROS : </span>{numero}</h1>
           <h1><span>SERIE   : </span>{serie}</h1>
-
         </div>
 
         <div className="container custom-container-inputs mt-5">
@@ -86,7 +85,7 @@ export const AgregarResultadoForm = () => {
                   readOnly={true}
                   type="text"
                   value={value}
-                  onChange={(e) => setInputValues(e.target.value)}
+                  onChange={(e) =>setInputValues(e.target.value)}
                   onFocus={() => setSelectedInput(index)}
                   className="custom-input"
                   id={index}
