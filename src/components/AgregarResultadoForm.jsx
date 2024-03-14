@@ -67,7 +67,6 @@ export const AgregarResultadoForm = () => {
 
           <h1><span>NÚMEROS : </span>{numero}</h1>
           <h1><span>SERIE   : </span>{serie}</h1>
-
         </div>
 
         <div className="container custom-container-inputs mt-5">
