@@ -83,7 +83,7 @@ export const AgregarResultadoForm = () => {
                   readOnly={true}
                   type="text"
                   value={value}
-                  onChange={(e) => setInputValues(e.target.value)}
+                  onChange={(e) =>{ setInputValues(e.target.value); setEnviado(''}}
                   onFocus={() => setSelectedInput(index)}
                   className="custom-input"
                   id={index}
