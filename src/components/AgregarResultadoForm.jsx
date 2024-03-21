@@ -71,8 +71,8 @@ export const AgregarResultadoForm = () => {
           <span>{sorteo}</span>
           < PremiosDropDown premio={premio} setPremio={setPremio} indicePremio={indicePremio} setIndicePremio={setIndicePremio} />
           <span>{indicePremio}</span>
-          <h1><span>NÚMEROS : </span>{numero}</h1>
-          <h1><span>SERIE   : </span>{serie}</h1>
+          <h3><span>NÚMEROS : </span>{numero}</h3>
+          <h3><span>SERIE   : </span>{serie}</h3>
         </div>
 
         <div className="container custom-container-inputs mt-5">
