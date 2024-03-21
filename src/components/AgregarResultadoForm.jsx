@@ -57,8 +57,8 @@ export const AgregarResultadoForm = () => {
   };
 
   const resultado = {
-    "sorteo": sorteo,
-    "premio": indicePremio,
+    "sorteo": 1,
+    "premio": 1,
     "numero": numero,
     "serie": serie
   }
