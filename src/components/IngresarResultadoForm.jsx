@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom";
 import { createResultado } from "../api/axios/resultados.api";
 import { getAllPremios } from "../api/axios/premios.api";
-import { SorteosDropDown } from "./SorteosDropDown";
+//import { SorteosDropDown } from "./SorteosDropDown";
 
 import "./IngresarResultadoForm.css"
 import { ContadorPremios } from "./ContadorPremios";
