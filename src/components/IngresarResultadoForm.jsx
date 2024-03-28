@@ -97,11 +97,11 @@ export const IngresarResultadoForm = () => {
        
         <div className="container justify-content-center">
 
-        <h1>
+        <h3>
             {
             contadorPremio ? premios[contadorPremio].titulo : "PREMIOS"
             }
-          </h1>
+          </h3>
           <h3><span>NÚMEROS : </span>{numero}</h3>
           <h3><span>SERIE   : </span>{serie}</h3>
 
