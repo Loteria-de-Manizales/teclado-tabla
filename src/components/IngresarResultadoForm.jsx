@@ -99,7 +99,7 @@ export const IngresarResultadoForm = () => {
 
         <h3>
             {
-            contadorPremio ? premios[contadorPremio].titulo : "PREMIOS"
+            contadorPremio ? premios[contadorPremio+1].titulo : "PREMIOS"
             }
           </h3>
           <h3><span>NÚMEROS : </span>{numero}</h3>
