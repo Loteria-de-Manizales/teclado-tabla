@@ -93,7 +93,7 @@ export const IngresarResultadoForm = () => {
     <>
      
    <form onSubmit={(event) => { event.preventDefault(); handleSubmit(); }}>
-       <SorteosDropDown />
+       
        
         <div className="container justify-content-center">
 
