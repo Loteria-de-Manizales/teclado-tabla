@@ -44,7 +44,7 @@ export const IngresarResultadoForm = () => {
   const handleSubmit = async (data) => {        
     setContadorPremio(contadorPremio+1)
     await createResultado(resultado)
-    setInputValues(Array(6).fill(''))
+   // setInputValues(Array(6).fill(''))
     // navigate("/ingresar-resultado")
   };
 
