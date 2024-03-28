@@ -18,7 +18,7 @@ export const IngresarResultadoForm = () => {
   const [numero, setNumero] = useState('')
   const [serie, setSerie] = useState('')
   const [totalPremios, setTotalPremios] = useState(0);
-  const [contadorPremio, setContadorPremio] = useState(1)  
+  const [contadorPremio, setContadorPremio] = useState(0)  
 
   const [premios, setPremios] = useState([]);
   
