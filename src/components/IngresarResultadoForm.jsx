@@ -102,8 +102,8 @@ export const IngresarResultadoForm = () => {
             contadorPremio ? premios[contadorPremio].titulo : "PREMIOS"
             }
           </h1>
-          <h1><span>NÚMEROS : </span>{numero}</h1>
-          <h1><span>SERIE   : </span>{serie}</h1>
+          <h3><span>NÚMEROS : </span>{numero}</h3>
+          <h3><span>SERIE   : </span>{serie}</h3>
 
         </div>
 
