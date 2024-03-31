@@ -5,7 +5,7 @@ import { getAllPremios } from "../api/axios/premios.api";
 //import { SorteosDropDown } from "./SorteosDropDown";
 
 import "./IngresarResultadoForm.css"
-import { ContadorPremios } from "./ContadorPremios";
+//import { ContadorPremios } from "./ContadorPremios";
 
 export const IngresarResultadoForm = () => {
 
@@ -39,10 +39,11 @@ export const IngresarResultadoForm = () => {
 
 
   let sorteo = 1;
+  let premio = 7;
 
 
   const handleSubmit = async (data) => {        
-    setContadorPremio(contadorPremio+1)
+    setContadorPremio(contadorPremio)
     await createResultado(resultado)
     setInputValues(Array(6).fill(''))
     navigate("/ingresar-resultado")
@@ -84,7 +85,7 @@ export const IngresarResultadoForm = () => {
 
   const resultado = {
     "sorteo": sorteo,
-    "premio": contadorPremio,
+    "premio": premio,
     "numero": numero,
     "serie": serie
   }
@@ -99,7 +100,7 @@ export const IngresarResultadoForm = () => {
 
         <h3>
             {
-            contadorPremio ? premios[contadorPremio+1].titulo : "PREMIOS"
+            contadorPremio ? premios[contadorPremio].titulo : "PREMIOS"
             }
           </h3>
           <h3><span>NÚMEROS : </span>{numero}</h3>
