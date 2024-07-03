@@ -5,19 +5,28 @@ import { SorteosPage } from './pages/SorteosPage';
 import { ResultadosPage } from './pages/ResultadosPage';
 import { ResultadoEnVivoPage } from './pages/ResultadoEnVivoPage';
 import { FormularioResultadosPage } from './pages/FormularioResultadosPage';
-//import { AgregarResultadoForm } from './components/AgregarResultadoForm';
+import { AgregarResultadoForm } from './components/AgregarResultadoForm';
 import { AgregarSorteoForm } from './components/AgregarSorteoForm';
-import { IngresarResultadoForm } from './components/IngresarResultadoForm';
+import { ResultadosTecladoVivo } from './components/ResultadosTecladoVivo';
+//import { IngresarResultadoForm } from './components/IngresarResultadoForm';
+import FormularioGPT from './components/FormularioGPT';
+import ResultadosTecladoGPT from './components/ResultadosTecladoGPT';
+import ResultadosPremiosTeclado from './components/ResultadosPremiosTeclado'
 
 export const AppRoutes = () => (
     <Routes>        
-        <Route path="/" element={<Navigate to="/resultado-en-vivo" />} />
+        <Route path="/" element={<Navigate to="/resultados-premios-teclado" />} />
         <Route path="/resultado-en-vivo" element={<ResultadoEnVivoPage/>} />
         <Route path="/planes" element={<PlanesPage/>} />        
         <Route path="/sorteos" element={<SorteosPage/>} />
         <Route path="/premios" element={<PremiosPage/>} />
         <Route path="/resultados" element={<ResultadosPage/>} />
-        <Route path="ingresar-resultado" element={< IngresarResultadoForm/>} />
+        <Route path="agregar-resultado" element={< AgregarResultadoForm/>} />
+        <Route path="formulario-teclado" element={< ResultadosTecladoVivo/>} />
+        <Route path="resultados-gpt" element={< ResultadosTecladoGPT/>} />
+        <Route path="formularioGPT" element={< FormularioGPT/>} />
+        <Route path="resultados-premios-teclado" element={< ResultadosPremiosTeclado/>} />
+        
         <Route path="/agregar-sorteo" element={< AgregarSorteoForm/>} />
         {/* <Route path="agregar-resultado" element={< AgregarResultadoForm/>} /> */}
         <Route path="/resultados/:id" element={<FormularioResultadosPage/>} />

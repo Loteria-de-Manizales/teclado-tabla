@@ -226,7 +226,6 @@ export const IngresarResultadoForm = () => {
 
             </div>
 
-
           </div>
         </div>
 

@@ -1,0 +1,80 @@
+.custom-container-buttons {
+    width: 400px;
+    background-color: #f0f0f0; /* Personaliza este color */
+    padding: 10px;
+}
+
+.custom-container-inputs {
+    width: 100%;
+    background-color: #191f6c; /* Personaliza este color */
+}
+
+
+.btn-square {
+    width: 2.75em; /* Ajusta para mantener la forma cuadrada */
+    height: 2.75em; /* Ajusta para mantener la forma cuadrada */
+    font-size: 1.25em; /* Ajusta según la necesidad para el texto */
+    font-weight: bolder;
+    margin: 0.5em; /* Margen estrecho entre botones */
+    background-color: #191f6c;  /* Personaliza este color */
+    color: #f0f0f0; /* Personaliza este color */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-rectangle {
+    width: 5em; /* Ajusta para mantener la forma cuadrada */
+    height: 2.75em; /* Ajusta para mantener la forma cuadrada */
+    font-size: 1.25em; /* Ajusta según la necesidad para el texto */
+    font-weight: bolder;
+    margin: 0.5em; /* Margen estrecho entre botones */
+    background-color: #191f6c;  /* Personaliza este color */
+    color: #f0f0f0; /* Personaliza este color */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-square:hover {
+    background-color: #ffb71b; /* Color al pasar el mouse */
+    color: #191f6c;
+}
+
+.btn-rectangle:hover {
+    background-color: #ffb71b; /* Color al pasar el mouse */
+    color: #191f6c;
+}
+
+.custom-input {
+    width: 2.5em; /* Ajusta para mantener la forma cuadrada */
+    height: 2.5em; /* Ajusta para mantener la forma cuadrada */
+    font-size: 3em; /* Ajusta según la necesidad para el texto */
+    font-weight: bolder;
+    text-align: center;
+    margin: 0.25em; /* Margen estrecho entre inputs */
+    background-color:  #f0f0f0; /* Personaliza este color de fondo */
+    color: #191f6c; /* Personaliza este color de texto */
+    border: 10px solid #ffb71b;
+    border-radius: 2.5em;
+    caret-color: transparent;
+
+}
+
+.custom-input:focus {
+    background-color: #191f6c; /* Color al pasar el mouse */
+    color: #f0f0f0;
+    border: 2px solid #f0f0f0;
+}
+
+.custom-input:hover {
+    background-color: #191f6c; /* Color al pasar el mouse */
+    color: #f0f0f0;
+    border: 2px solid #f0f0f0;
+}
+
+.texto {
+    text-align: left;
+    font-size: 3.5em;
+    color: #ffb71b;
+}

@@ -17,20 +17,9 @@ export function NavBar() {
                     <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <Link className="nav-link active" aria-current="page" to="/resultado-en-vivo"><h4>RESULTADO EN VIVO</h4></Link>
+                                <Link className="nav-link active" aria-current="page" to="/resultados-premios-teclado"><h4>RESULTADOS EN VIVO</h4></Link>
                             </li>
-                            <li className="nav-item">
-                                <Link className="nav-link active" aria-current="page" to="/planes"><h4>PLANES</h4></Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link active" aria-current="page" to="/sorteos"><h4>SORTEOS</h4></Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link active" aria-current="page" to="/premios"><h4>PREMIOS</h4></Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link active" aria-current="page" to="/resultados"><h4>RESULTADOS</h4></Link>
-                            </li>
+                            
 
                         </ul>
                     </div>
