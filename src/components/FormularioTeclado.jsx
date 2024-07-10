@@ -302,7 +302,7 @@ const FormularioTeclado = () => {
     },
   ];
   const [inputs, setInputs] = useState(Array(6).fill(""));
-  const [concatenatedValues, setConcatenatedValues] = useState("");
+  //const [concatenatedValues, setConcatenatedValues] = useState("");
   const [storedValues, setStoredValues] = useState([]);
   const [disabled, setDisabled] = useState(false);
   const [contadorPremio, setContadorPremio] = useState(0);
@@ -321,12 +321,12 @@ const FormularioTeclado = () => {
 
   const handleArrowUp = () => {
     const concatenated = inputs.join("");
-    const numPremios = 37;
-    setConcatenatedValues(concatenated);
-    const newStoredValue = {
-      id: numPremios - storedValues.length + 1,
-      value: concatenated,
-    };
+    //const numPremios = 37;
+    // setConcatenatedValues(concatenated);
+    // const newStoredValue = {
+    //   id: numPremios - storedValues.length + 1,
+    //   value: concatenated,
+    // };
 
     //setStoredValues([...storedValues, newStoredValue]);
     setStoredValues([(storedValues[contadorPremio] = concatenated)]);
@@ -342,12 +342,12 @@ const FormularioTeclado = () => {
 
   const handleArrowDown = () => {
     const concatenated = inputs.join("");
-    const numPremios = 37;
-    setConcatenatedValues(concatenated);
-    const newStoredValue = {
-      id: numPremios - storedValues.length,
-      value: concatenated,
-    };
+    //const numPremios = 37;
+    //setConcatenatedValues(concatenated);
+    // const newStoredValue = {
+    //   id: numPremios - storedValues.length,
+    //   value: concatenated,
+    // };
 
     //setStoredValues([...storedValues, newStoredValue]);
     setStoredValues([(storedValues[contadorPremio] = concatenated)]);
@@ -388,73 +388,88 @@ const FormularioTeclado = () => {
             : `PREMIO ${premios[0].titulo}\nPOR ${premios[0].valor}`}
         </div>
 
-        <div className="custom-container-inputs">
-          <InputComponent
-            tabIndex={0}
-            maxLength={1}
-            onEnter={handleEnter}
-            value={inputs[0]}
-            onChange={handleInputChange}
-            onAllInputsFilled={checkAllInputsFilled}
-            disabled={disabled}
-            onArrowUp={handleArrowUp}
-            onArrowDown={handleArrowDown}
-          />
-          <InputComponent
-            tabIndex={1}
-            maxLength={1}
-            onEnter={handleEnter}
-            value={inputs[1]}
-            onChange={handleInputChange}
-            onAllInputsFilled={checkAllInputsFilled}
-            disabled={disabled}
-            onArrowUp={handleArrowUp}
-            onArrowDown={handleArrowDown}
-          />
-          <InputComponent
-            tabIndex={2}
-            maxLength={1}
-            onEnter={handleEnter}
-            value={inputs[2]}
-            onChange={handleInputChange}
-            onAllInputsFilled={checkAllInputsFilled}
-            disabled={disabled}
-            onArrowUp={handleArrowUp}
-            onArrowDown={handleArrowDown}
-          />
-          <InputComponent
-            tabIndex={3}
-            maxLength={1}
-            onEnter={handleEnter}
-            value={inputs[3]}
-            onChange={handleInputChange}
-            onAllInputsFilled={checkAllInputsFilled}
-            disabled={disabled}
-            onArrowUp={handleArrowUp}
-            onArrowDown={handleArrowDown}
-          />
-          <InputComponent
-            tabIndex={4}
-            maxLength={2}
-            onEnter={handleEnter}
-            value={inputs[4]}
-            onChange={handleInputChange}
-            onAllInputsFilled={checkAllInputsFilled}
-            disabled={disabled}
-            onArrowUp={handleArrowUp}
-            onArrowDown={handleArrowDown}
-          />
-          <InputComponent
-            tabIndex={5}
-            maxLength={1}
-            onEnter={handleEnter}
-            value={inputs[5]}
-            onChange={handleInputChange}
-            onAllInputsFilled={checkAllInputsFilled}
-            disabled={disabled}
-            onArrowUp={handleArrowUp}
-            onArrowDown={handleArrowDown}
-          />
+        <div className="row">
+          <div className="col">
+            <div className="texto"> {`NÚMERO: `} </div>
+          </div>
+          <div className="col">
+            <div className="texto"> {`SERIE: `} </div>
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="custom-container-inputs">
+            <div className="col">
+              <InputComponent
+                tabIndex={0}
+                maxLength={1}
+                onEnter={handleEnter}
+                value={inputs[0]}
+                onChange={handleInputChange}
+                onAllInputsFilled={checkAllInputsFilled}
+                disabled={disabled}
+                onArrowUp={handleArrowUp}
+                onArrowDown={handleArrowDown}
+              />
+              <InputComponent
+                tabIndex={1}
+                maxLength={1}
+                onEnter={handleEnter}
+                value={inputs[1]}
+                onChange={handleInputChange}
+                onAllInputsFilled={checkAllInputsFilled}
+                disabled={disabled}
+                onArrowUp={handleArrowUp}
+                onArrowDown={handleArrowDown}
+              />
+              <InputComponent
+                tabIndex={2}
+                maxLength={1}
+                onEnter={handleEnter}
+                value={inputs[2]}
+                onChange={handleInputChange}
+                onAllInputsFilled={checkAllInputsFilled}
+                disabled={disabled}
+                onArrowUp={handleArrowUp}
+                onArrowDown={handleArrowDown}
+              />
+              <InputComponent
+                tabIndex={3}
+                maxLength={1}
+                onEnter={handleEnter}
+                value={inputs[3]}
+                onChange={handleInputChange}
+                onAllInputsFilled={checkAllInputsFilled}
+                disabled={disabled}
+                onArrowUp={handleArrowUp}
+                onArrowDown={handleArrowDown}
+              />
+            </div>
+            <div className="col">
+              <InputComponent
+                tabIndex={4}
+                maxLength={2}
+                onEnter={handleEnter}
+                value={inputs[4]}
+                onChange={handleInputChange}
+                onAllInputsFilled={checkAllInputsFilled}
+                disabled={disabled}
+                onArrowUp={handleArrowUp}
+                onArrowDown={handleArrowDown}
+              />
+              <InputComponent
+                tabIndex={5}
+                maxLength={1}
+                onEnter={handleEnter}
+                value={inputs[5]}
+                onChange={handleInputChange}
+                onAllInputsFilled={checkAllInputsFilled}
+                disabled={disabled}
+                onArrowUp={handleArrowUp}
+                onArrowDown={handleArrowDown}
+              />
+            </div>
+          </div>
         </div>
       </form>
       {/* <p>Valores concatenados: {concatenatedValues}</p>

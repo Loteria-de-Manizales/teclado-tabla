@@ -28,3 +28,13 @@
   font-size: 3.5em;
   color: #ffb71b;
 }
+
+.row {
+  display: flex;
+  justify-content: center;
+}
+
+.col {
+  display: flex;
+  justify-content: center;
+}
