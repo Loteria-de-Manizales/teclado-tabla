@@ -77,7 +77,8 @@ const InputComponent = ({
 const FormularioGPT = () => {
   const [inputs, setInputs] = useState(Array(6).fill(""));
   const [concatenatedValues, setConcatenatedValues] = useState("");
-  const [storedValues, setStoredValues] = useState([]);
+  const [storedValues, setStoredValues] = useState(Array(6).fill(""));
+  const [counter, setCounter] = useState(0);
   const [disabled, setDisabled] = useState(false);
 
   const handleEnter = (nextTabIndex) => {
@@ -93,6 +94,17 @@ const FormularioGPT = () => {
   };
 
   const handleArrowUp = () => {
+    if (counter > 0) {
+      setCounter(counter - 1);
+    }
+
+    const concatenated = inputs.join("");
+    setConcatenatedValues(concatenated);
+
+    const newStoredValues = [...storedValues];
+    newStoredValues[counter] = concatenated;
+    setStoredValues(newStoredValues);
+
     setInputs(Array(6).fill(""));
     setDisabled(false);
     const input = document.querySelector('input[tabIndex="0"]');
@@ -105,12 +117,13 @@ const FormularioGPT = () => {
     const concatenated = inputs.join("");
     setConcatenatedValues(concatenated);
 
-    const newStoredValue = {
-      id: storedValues.length + 1,
-      value: concatenated,
-    };
+    const newStoredValues = [...storedValues];
+    newStoredValues[counter] = concatenated;
+    setStoredValues(newStoredValues);
 
-    setStoredValues([...storedValues, newStoredValue]);
+    if (counter < storedValues.length - 1) {
+      setCounter(counter + 1);
+    }
 
     setInputs(Array(6).fill(""));
     setDisabled(false);
@@ -211,12 +224,13 @@ const FormularioGPT = () => {
       </form>
       <p>Valores concatenados: {concatenatedValues}</p>
       <ul>
-        {storedValues.map((item) => (
-          <li key={item.id}>
-            {item.id}: {item.value}
+        {storedValues.map((item, index) => (
+          <li key={index}>
+            {index}: {item}
           </li>
         ))}
       </ul>
+      <p>Contador: {counter}</p>
     </div>
   );
 };

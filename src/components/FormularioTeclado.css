@@ -5,8 +5,10 @@
 }
 
 .custom-container-inputs {
+  display: flex;
+  justify-content: center;
   width: 100%;
-  background-color: #ffb71b; /* Personaliza este color */
+  background-color: #191f6c; /* Personaliza este color */
 }
 
 .custom-input {
@@ -24,7 +26,7 @@
 }
 
 .texto {
-  text-align: left;
+  text-align: center;
   font-size: 3.5em;
   color: #ffb71b;
 }

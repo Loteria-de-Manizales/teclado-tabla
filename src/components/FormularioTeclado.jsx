@@ -320,7 +320,24 @@ const FormularioTeclado = () => {
   };
 
   const handleArrowUp = () => {
-    alert("Sin instrucciones");
+    const concatenated = inputs.join("");
+    const numPremios = 37;
+    setConcatenatedValues(concatenated);
+    const newStoredValue = {
+      id: numPremios - storedValues.length + 1,
+      value: concatenated,
+    };
+
+    //setStoredValues([...storedValues, newStoredValue]);
+    setStoredValues([(storedValues[contadorPremio] = concatenated)]);
+
+    setInputs(Array(6).fill(""));
+    setDisabled(false);
+    const input = document.querySelector('input[tabIndex="0"]');
+    if (input) {
+      input.focus();
+    }
+    setContadorPremio(contadorPremio - 1);
   };
 
   const handleArrowDown = () => {
@@ -332,8 +349,8 @@ const FormularioTeclado = () => {
       value: concatenated,
     };
 
-    setStoredValues([...storedValues, newStoredValue]);
-
+    //setStoredValues([...storedValues, newStoredValue]);
+    setStoredValues([(storedValues[contadorPremio] = concatenated)]);
     setInputs(Array(6).fill(""));
     setDisabled(false);
     const input = document.querySelector('input[tabIndex="0"]');
@@ -440,14 +457,17 @@ const FormularioTeclado = () => {
           />
         </div>
       </form>
-      <p>Valores concatenados: {concatenatedValues}</p>
+      {/* <p>Valores concatenados: {concatenatedValues}</p>
       <ul>
         {storedValues.map((item) => (
-          <li key={item.id}>
-            {item.id}: {item.value}
-          </li>
+           <li key={item.id}>
+             {item.id}: {contadorPremio} : {item.value}
+           </li>
+           <li key={item.id}>
+             {item.id}: {contadorPremio} : {item.value}
+           </li>
         ))}
-      </ul>
+      </ul> */}
     </div>
   );
 };
