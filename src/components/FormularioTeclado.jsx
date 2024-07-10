@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./ResultadosPremiosTeclado.css";
+import "./FormularioTeclado.css";
 
 const InputComponent = ({
   tabIndex,
@@ -9,6 +9,8 @@ const InputComponent = ({
   value,
   onChange,
   disabled,
+  onArrowUp,
+  onArrowDown,
 }) => {
   const handleKeyDown = (event) => {
     const { key, target } = event;
@@ -41,9 +43,15 @@ const InputComponent = ({
       }
 
       inputs[nextTabIndex].focus();
-      onAllInputsFilled();
-
+    } else if (key === "Enter") {
       event.preventDefault();
+      onAllInputsFilled();
+    } else if (key === "ArrowUp") {
+      event.preventDefault();
+      onArrowUp();
+    } else if (key === "ArrowDown") {
+      event.preventDefault();
+      onArrowDown();
     }
   };
 
@@ -55,19 +63,20 @@ const InputComponent = ({
       onKeyDown={handleKeyDown}
       value={value}
       onChange={(e) => onChange(tabIndex, e.target.value)}
+      //   style={{
+      //     display: "block",
+      //     margin: "10px 0",
+      //     width: "40px",
+      //     textAlign: "center",
+      //     caretColor: "transparent",
+      //   }}
       disabled={disabled}
       className="custom-input"
     />
   );
 };
 
-const ResultadosPremiosTeclado = () => {
-  const [focusIndex, setFocusIndex] = useState(0);
-  const [inputs, setInputs] = useState(Array(6).fill(""));
-  const [concatenatedValues, setConcatenatedValues] = useState("");
-  const [disabled, setDisabled] = useState(false);
-  const [contadorPremio, setContadorPremio] = useState(0);
-
+const FormularioTeclado = () => {
   const premios = [
     {
       id: 1,
@@ -292,30 +301,16 @@ const ResultadosPremiosTeclado = () => {
       plan: 1,
     },
   ];
-
-  const handleClickNext = () => {
-    setDisabled(false);
-    setContadorPremio(contadorPremio + 1);
-    // const concatenated = inputs.join('');
-    // setConcatenatedValues(concatenated);
-
-    const input = document.querySelector('input[tabIndex="0"]');
-    if (input) {
-      input.focus();
-    }
-    setInputs(Array(6).fill(""));
-  };
-
-  const handleClickPrev = () => {
-    setContadorPremio(contadorPremio - 1);
-  };
+  const [inputs, setInputs] = useState(Array(6).fill(""));
+  const [concatenatedValues, setConcatenatedValues] = useState("");
+  const [storedValues, setStoredValues] = useState([]);
+  const [disabled, setDisabled] = useState(false);
+  const [contadorPremio, setContadorPremio] = useState(0);
 
   const handleEnter = (nextTabIndex) => {
     const inputs = Array.from(document.querySelectorAll('input[type="text"]'));
-
     if (nextTabIndex >= inputs.length) nextTabIndex = 0;
     inputs[nextTabIndex].focus();
-    setFocusIndex(nextTabIndex);
   };
 
   const handleInputChange = (index, value) => {
@@ -324,15 +319,28 @@ const ResultadosPremiosTeclado = () => {
     setInputs(newInputs);
   };
 
-  const handleButtonClick = () => {
+  const handleArrowUp = () => {
+    alert("Sin instrucciones");
+  };
+
+  const handleArrowDown = () => {
     const concatenated = inputs.join("");
+    const numPremios = 37;
     setConcatenatedValues(concatenated);
-    //  setInputs(Array(6).fill(''));
+    const newStoredValue = {
+      id: numPremios - storedValues.length,
+      value: concatenated,
+    };
+
+    setStoredValues([...storedValues, newStoredValue]);
+
+    setInputs(Array(6).fill(""));
     setDisabled(false);
     const input = document.querySelector('input[tabIndex="0"]');
     if (input) {
       input.focus();
     }
+    setContadorPremio(contadorPremio + 1);
   };
 
   const checkAllInputsFilled = () => {
@@ -342,7 +350,7 @@ const ResultadosPremiosTeclado = () => {
     });
 
     if (allFilled) {
-      handleButtonClick();
+      handleArrowDown();
       setDisabled(true);
     }
   };
@@ -355,126 +363,93 @@ const ResultadosPremiosTeclado = () => {
   }, []);
 
   return (
-    <>
+    <div>
       <form>
-        <div id="carouselExample" className="carousel slide">
-          <div className="carousel-inner">
-            <div className="carousel-item active">
-              <div className="container custom-container-inputs-sm-12">
-                <div className="row">
-                  <div className="texto">
-                    {contadorPremio
-                      ? `PREMIO ${premios[contadorPremio - 1].titulo}\nPOR ${
-                          premios[contadorPremio - 1].valor
-                        }`
-                      : "PREMIOS"}
-                  </div>
-                </div>
+        <div className="texto">
+          {contadorPremio
+            ? `PREMIO ${premios[contadorPremio].titulo}\nPOR ${premios[contadorPremio].valor}`
+            : `PREMIO ${premios[0].titulo}\nPOR ${premios[0].valor}`}
+        </div>
 
-                <div className="row">
-                  <div className="col-sm-8">
-                    <div className="texto"> {`NÚMERO: `} </div>
-                  </div>
-                  <div className="col-sm-4">
-                    <div className="texto"> {`SERIE: `} </div>
-                  </div>
-                </div>
-
-                <div className="row">
-                  <div className="col-sm-8">
-                    <InputComponent
-                      tabIndex={0}
-                      maxLength={1}
-                      onEnter={handleEnter}
-                      value={inputs[0]}
-                      onChange={handleInputChange}
-                      onAllInputsFilled={checkAllInputsFilled}
-                      disabled={disabled}
-                    />
-                    <InputComponent
-                      tabIndex={1}
-                      maxLength={1}
-                      onEnter={handleEnter}
-                      value={inputs[1]}
-                      onChange={handleInputChange}
-                      onAllInputsFilled={checkAllInputsFilled}
-                      disabled={disabled}
-                    />
-                    <InputComponent
-                      tabIndex={2}
-                      maxLength={1}
-                      onEnter={handleEnter}
-                      value={inputs[2]}
-                      onChange={handleInputChange}
-                      onAllInputsFilled={checkAllInputsFilled}
-                      disabled={disabled}
-                    />
-                    <InputComponent
-                      tabIndex={3}
-                      maxLength={1}
-                      onEnter={handleEnter}
-                      value={inputs[3]}
-                      onChange={handleInputChange}
-                      onAllInputsFilled={checkAllInputsFilled}
-                      disabled={disabled}
-                    />
-                  </div>
-                  <div className="col-sm-4">
-                    <InputComponent
-                      tabIndex={4}
-                      maxLength={2}
-                      onEnter={handleEnter}
-                      value={inputs[4]}
-                      onChange={handleInputChange}
-                      onAllInputsFilled={checkAllInputsFilled}
-                      disabled={disabled}
-                    />
-                    <InputComponent
-                      tabIndex={5}
-                      maxLength={1}
-                      onEnter={handleEnter}
-                      value={inputs[5]}
-                      onChange={handleInputChange}
-                      onAllInputsFilled={checkAllInputsFilled}
-                      disabled={disabled}
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <button
-            onClick={handleClickPrev}
-            className="carousel-control-prev"
-            type="button"
-            data-bs-target="#carouselExample"
-            data-bs-slide="prev"
-          >
-            <span
-              className="carousel-control-prev-icon"
-              aria-hidden="true"
-            ></span>
-            <span className="visually-hidden">Previous</span>
-          </button>
-          <button
-            onClick={handleClickNext}
-            className="carousel-control-next"
-            type="button"
-            data-bs-target="#carouselExample"
-            data-bs-slide="next"
-          >
-            <span
-              className="carousel-control-next-icon"
-              aria-hidden="true"
-            ></span>
-            <span className="visually-hidden">Next</span>
-          </button>
+        <div className="custom-container-inputs">
+          <InputComponent
+            tabIndex={0}
+            maxLength={1}
+            onEnter={handleEnter}
+            value={inputs[0]}
+            onChange={handleInputChange}
+            onAllInputsFilled={checkAllInputsFilled}
+            disabled={disabled}
+            onArrowUp={handleArrowUp}
+            onArrowDown={handleArrowDown}
+          />
+          <InputComponent
+            tabIndex={1}
+            maxLength={1}
+            onEnter={handleEnter}
+            value={inputs[1]}
+            onChange={handleInputChange}
+            onAllInputsFilled={checkAllInputsFilled}
+            disabled={disabled}
+            onArrowUp={handleArrowUp}
+            onArrowDown={handleArrowDown}
+          />
+          <InputComponent
+            tabIndex={2}
+            maxLength={1}
+            onEnter={handleEnter}
+            value={inputs[2]}
+            onChange={handleInputChange}
+            onAllInputsFilled={checkAllInputsFilled}
+            disabled={disabled}
+            onArrowUp={handleArrowUp}
+            onArrowDown={handleArrowDown}
+          />
+          <InputComponent
+            tabIndex={3}
+            maxLength={1}
+            onEnter={handleEnter}
+            value={inputs[3]}
+            onChange={handleInputChange}
+            onAllInputsFilled={checkAllInputsFilled}
+            disabled={disabled}
+            onArrowUp={handleArrowUp}
+            onArrowDown={handleArrowDown}
+          />
+          <InputComponent
+            tabIndex={4}
+            maxLength={2}
+            onEnter={handleEnter}
+            value={inputs[4]}
+            onChange={handleInputChange}
+            onAllInputsFilled={checkAllInputsFilled}
+            disabled={disabled}
+            onArrowUp={handleArrowUp}
+            onArrowDown={handleArrowDown}
+          />
+          <InputComponent
+            tabIndex={5}
+            maxLength={1}
+            onEnter={handleEnter}
+            value={inputs[5]}
+            onChange={handleInputChange}
+            onAllInputsFilled={checkAllInputsFilled}
+            disabled={disabled}
+            onArrowUp={handleArrowUp}
+            onArrowDown={handleArrowDown}
+          />
         </div>
       </form>
-      {/* <button onClick={handleButtonClick}>Borrar y Concatenar</button>
-      <p>Valores concatenados: {concatenatedValues}</p> */}
-    </>
+      <p>Valores concatenados: {concatenatedValues}</p>
+      <ul>
+        {storedValues.map((item) => (
+          <li key={item.id}>
+            {item.id}: {item.value}
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 
-export default ResultadosPremiosTeclado;
+export default FormularioTeclado;

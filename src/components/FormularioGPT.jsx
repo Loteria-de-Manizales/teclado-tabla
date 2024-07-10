@@ -1,11 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
 
-const InputComponent = ({ tabIndex, maxLength, onEnter }) => {
+const InputComponent = ({
+  tabIndex,
+  maxLength,
+  onEnter,
+  onAllInputsFilled,
+  value,
+  onChange,
+  disabled,
+  onArrowUp,
+  onArrowDown,
+}) => {
   const handleKeyDown = (event) => {
     const { key, target } = event;
 
     // Permitir solo dígitos numéricos del 0 al 9
-    if (!/^\d$/.test(key) && key !== 'Backspace') {
+    if (!/^\d$/.test(key) && key !== "Backspace") {
       event.preventDefault();
     }
 
@@ -16,20 +26,31 @@ const InputComponent = ({ tabIndex, maxLength, onEnter }) => {
           onEnter(tabIndex + 1);
         }
       }, 0);
-    } else if (key === 'ArrowRight' || key === 'ArrowLeft') {
+    } else if (key === "ArrowRight" || key === "ArrowLeft") {
       event.preventDefault(); // Prevenir el comportamiento predeterminado de las teclas de flecha
-      const inputs = Array.from(document.querySelectorAll('input[type="text"]'));
+      const inputs = Array.from(
+        document.querySelectorAll('input[type="text"]')
+      );
       let nextTabIndex;
 
-      if (key === 'ArrowRight') {
+      if (key === "ArrowRight") {
         nextTabIndex = tabIndex + 1;
         if (nextTabIndex >= inputs.length) nextTabIndex = 0;
-      } else if (key === 'ArrowLeft') {
+      } else if (key === "ArrowLeft") {
         nextTabIndex = tabIndex - 1;
         if (nextTabIndex < 0) nextTabIndex = inputs.length - 1;
       }
 
       inputs[nextTabIndex].focus();
+    } else if (key === "Enter") {
+      event.preventDefault();
+      onAllInputsFilled();
+    } else if (key === "ArrowUp") {
+      event.preventDefault();
+      onArrowUp();
+    } else if (key === "ArrowDown") {
+      event.preventDefault();
+      onArrowDown();
     }
   };
 
@@ -39,30 +60,164 @@ const InputComponent = ({ tabIndex, maxLength, onEnter }) => {
       tabIndex={tabIndex}
       maxLength={maxLength}
       onKeyDown={handleKeyDown}
-      style={{ display: 'block', margin: '10px 0', width: '40px', textAlign: 'center' }}
+      value={value}
+      onChange={(e) => onChange(tabIndex, e.target.value)}
+      style={{
+        display: "block",
+        margin: "10px 0",
+        width: "40px",
+        textAlign: "center",
+        caretColor: "transparent",
+      }}
+      disabled={disabled}
     />
   );
 };
 
 const FormularioGPT = () => {
-  const [focusIndex, setFocusIndex] = useState(0);
+  const [inputs, setInputs] = useState(Array(6).fill(""));
+  const [concatenatedValues, setConcatenatedValues] = useState("");
+  const [storedValues, setStoredValues] = useState([]);
+  const [disabled, setDisabled] = useState(false);
 
   const handleEnter = (nextTabIndex) => {
     const inputs = Array.from(document.querySelectorAll('input[type="text"]'));
     if (nextTabIndex >= inputs.length) nextTabIndex = 0;
     inputs[nextTabIndex].focus();
-    setFocusIndex(nextTabIndex);
   };
 
+  const handleInputChange = (index, value) => {
+    const newInputs = [...inputs];
+    newInputs[index] = value;
+    setInputs(newInputs);
+  };
+
+  const handleArrowUp = () => {
+    setInputs(Array(6).fill(""));
+    setDisabled(false);
+    const input = document.querySelector('input[tabIndex="0"]');
+    if (input) {
+      input.focus();
+    }
+  };
+
+  const handleArrowDown = () => {
+    const concatenated = inputs.join("");
+    setConcatenatedValues(concatenated);
+
+    const newStoredValue = {
+      id: storedValues.length + 1,
+      value: concatenated,
+    };
+
+    setStoredValues([...storedValues, newStoredValue]);
+
+    setInputs(Array(6).fill(""));
+    setDisabled(false);
+    const input = document.querySelector('input[tabIndex="0"]');
+    if (input) {
+      input.focus();
+    }
+  };
+
+  const checkAllInputsFilled = () => {
+    const allFilled = inputs.every((value, index) => {
+      const maxLength = index === 4 ? 2 : 1;
+      return value.length === maxLength;
+    });
+
+    if (allFilled) {
+      handleArrowDown();
+      setDisabled(true);
+    }
+  };
+
+  useEffect(() => {
+    const input = document.querySelector('input[tabIndex="0"]');
+    if (input) {
+      input.focus();
+    }
+  }, []);
+
   return (
-    <form>
-      <InputComponent tabIndex={0} maxLength={1} onEnter={handleEnter} />
-      <InputComponent tabIndex={1} maxLength={1} onEnter={handleEnter} />
-      <InputComponent tabIndex={2} maxLength={1} onEnter={handleEnter} />
-      <InputComponent tabIndex={3} maxLength={1} onEnter={handleEnter} />
-      <InputComponent tabIndex={4} maxLength={2} onEnter={handleEnter} />
-      <InputComponent tabIndex={5} maxLength={1} onEnter={handleEnter} />
-    </form>
+    <div>
+      <form>
+        <InputComponent
+          tabIndex={0}
+          maxLength={1}
+          onEnter={handleEnter}
+          value={inputs[0]}
+          onChange={handleInputChange}
+          onAllInputsFilled={checkAllInputsFilled}
+          disabled={disabled}
+          onArrowUp={handleArrowUp}
+          onArrowDown={handleArrowDown}
+        />
+        <InputComponent
+          tabIndex={1}
+          maxLength={1}
+          onEnter={handleEnter}
+          value={inputs[1]}
+          onChange={handleInputChange}
+          onAllInputsFilled={checkAllInputsFilled}
+          disabled={disabled}
+          onArrowUp={handleArrowUp}
+          onArrowDown={handleArrowDown}
+        />
+        <InputComponent
+          tabIndex={2}
+          maxLength={1}
+          onEnter={handleEnter}
+          value={inputs[2]}
+          onChange={handleInputChange}
+          onAllInputsFilled={checkAllInputsFilled}
+          disabled={disabled}
+          onArrowUp={handleArrowUp}
+          onArrowDown={handleArrowDown}
+        />
+        <InputComponent
+          tabIndex={3}
+          maxLength={1}
+          onEnter={handleEnter}
+          value={inputs[3]}
+          onChange={handleInputChange}
+          onAllInputsFilled={checkAllInputsFilled}
+          disabled={disabled}
+          onArrowUp={handleArrowUp}
+          onArrowDown={handleArrowDown}
+        />
+        <InputComponent
+          tabIndex={4}
+          maxLength={2}
+          onEnter={handleEnter}
+          value={inputs[4]}
+          onChange={handleInputChange}
+          onAllInputsFilled={checkAllInputsFilled}
+          disabled={disabled}
+          onArrowUp={handleArrowUp}
+          onArrowDown={handleArrowDown}
+        />
+        <InputComponent
+          tabIndex={5}
+          maxLength={1}
+          onEnter={handleEnter}
+          value={inputs[5]}
+          onChange={handleInputChange}
+          onAllInputsFilled={checkAllInputsFilled}
+          disabled={disabled}
+          onArrowUp={handleArrowUp}
+          onArrowDown={handleArrowDown}
+        />
+      </form>
+      <p>Valores concatenados: {concatenatedValues}</p>
+      <ul>
+        {storedValues.map((item) => (
+          <li key={item.id}>
+            {item.id}: {item.value}
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 

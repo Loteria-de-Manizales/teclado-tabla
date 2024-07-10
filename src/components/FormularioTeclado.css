@@ -6,7 +6,7 @@
 
 .custom-container-inputs {
   width: 100%;
-  background-color: #191f6c; /* Personaliza este color */
+  background-color: #ffb71b; /* Personaliza este color */
 }
 
 .custom-input {
@@ -20,7 +20,7 @@
   color: #191f6c; /* Personaliza este color de texto */
   border: 10px solid #ffb71b;
   border-radius: 2.5em;
-  /* caret-color: transparent; */
+  caret-color: transparent;
 }
 
 .texto {
