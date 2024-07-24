@@ -7,23 +7,29 @@ export function AgregarSorteoForm() {
    const [entrada, setEntrada] = useState('')
    const [titulo, setTitulo] = useState()
    const [fecha, setFecha] = useState('')
+   const [tipo, setTipo] = useState('')
 
    useEffect(()=>{    
         setTitulo(entrada);          
     }, [entrada])
     
      const onEntradaChange = (event) => {
-     setEntrada(event.target.value);     
+      setEntrada(event.target.value);     
      };
 
      const onFechaChange = (event) => {
-      setFecha(event.target.value);     
-      };
+       setFecha(event.target.value);     
+     };
+
+     const onTipoChange = (event) => {
+      setTipo(event.target.value);     
+    };
 
      const sorteo = {
        "titulo": titulo,
-       "plan": '',
+       "plan": 1,
        "fecha": fecha,
+       "tipo": tipo,
        "autoridades" : ''
      } 
 
@@ -65,10 +71,17 @@ export function AgregarSorteoForm() {
              value={fecha}
              onChange={onFechaChange} 
          />
+         <input 
+             type="text" 
+             placeholder="TIPO"
+             value={tipo}
+             onChange={onTipoChange} 
+         />
          
 
          <h1><span>TITULO : </span>{titulo}</h1>
          <h1><span>FECHA   : </span>{fecha}</h1>
+         <h1><span>TIPO   : </span>{tipo}</h1>
            <button>ENVIAR</button>
        </form>
 

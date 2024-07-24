@@ -4,6 +4,7 @@ import { getAllPremios } from '../api/axios/premios.api';
 export function PremiosDropDown({premio, setPremio, indicePremio, setIndicePremio}) {
   const [premios, setPremios] = useState([]);
 
+
   // Obtener datos de la API
   useEffect(() => {
     CargarListaPremios()
@@ -19,20 +20,19 @@ export function PremiosDropDown({premio, setPremio, indicePremio, setIndicePremi
 
   const handleChange = (event) => {
     setPremio(event.target.value);
-    setIndicePremio(event.target.index);
+    setIndicePremio(event.target.key)    
   }
 
   return (
     <>
       <select value={premio} onChange={handleChange}>
-        {premios.map((premio, index) => (
-          <option key={index} value={premio.titulo}>
-            {premio.titulo}
-          </option>          
-        ))}
-      </select>      
-      <div>{indicePremio}</div>
-    </>
+        {premios.map((premio, indicePremio) => (          
+          <option key={indicePremio} value={premio.titulo}>
+            {indicePremio}:{premio.titulo}
+          </option>                  
+        ))}        
+      </select>
+    </>    
   );
 }
 

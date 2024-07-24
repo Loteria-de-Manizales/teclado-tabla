@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom";
 import { createResultado } from "../api/axios/resultados.api";
+import { searchPremio } from "../api/axios/premios.api";
 import { SorteosDropDown } from "./SorteosDropDown";
 import { PremiosDropDown } from "./PremiosDropDown";
 import "./AgregarResultadoForm.css"
@@ -17,11 +18,16 @@ export const AgregarResultadoForm = () => {
   const [serie, setSerie] = useState('');
 
   const [premio, setPremio] = useState('');
-  const [indicePremio, setIndicePremio] = useState(null);
+  const [indicePremio, setIndicePremio] = useState(1);
   const [sorteo, setSorteo] = useState('');
+  const [indiceSorteo, setIndiceSorteo] = useState(1);
 
   const handleSubmit = async (data) => {
-    await createResultado(resultado)
+    const response=await searchPremio(premio)
+    console.log(response.data)
+    
+    //await createResultado(resultado)
+    setInputValues(Array(6).fill(''))
     navigate("/agregar-resultado")
   };
 
@@ -67,10 +73,13 @@ export const AgregarResultadoForm = () => {
     <>
       <form onSubmit={(event) => { event.preventDefault(); handleSubmit(); }}>
         <div>
-          < SorteosDropDown sorteo={sorteo} setSorteo={setSorteo} />
+          < SorteosDropDown sorteo={sorteo} setSorteo={setSorteo} indiceSorteo={indiceSorteo} setIndiceSorteo={setIndiceSorteo} />
+          <span>{indiceSorteo}:</span>
           <span>{sorteo}</span>
+          
           < PremiosDropDown premio={premio} setPremio={setPremio} indicePremio={indicePremio} setIndicePremio={setIndicePremio} />
-          <span>{indicePremio}</span>
+          <apan>{indicePremio}:</apan>
+          <span>{premio}</span>          
           <h3><span>NÚMEROS : </span>{numero}</h3>
           <h3><span>SERIE   : </span>{serie}</h3>
         </div>

@@ -1,0 +1,32 @@
+.custom-container-buttons {
+  width: 400px;
+  background-color: #f0f0f0; /* Personaliza este color */
+  padding: 10px;
+}
+
+.custom-container-inputs {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: #191f6c; /* Personaliza este color */
+}
+
+.custom-input {
+  width: 2.5em; /* Ajusta para mantener la forma cuadrada */
+  height: 2.5em; /* Ajusta para mantener la forma cuadrada */
+  font-size: 3em; /* Ajusta según la necesidad para el texto */
+  font-weight: bolder;
+  text-align: center;
+  margin: 0.25em; /* Margen estrecho entre inputs */
+  background-color: #f0f0f0; /* Personaliza este color de fondo */
+  color: #191f6c; /* Personaliza este color de texto */
+  border: 10px solid #ffb71b;
+  border-radius: 2.5em;
+  caret-color: transparent;
+}
+
+.texto {
+  text-align: center;
+  font-size: 3.5em;
+  color: #ffb71b;
+}
