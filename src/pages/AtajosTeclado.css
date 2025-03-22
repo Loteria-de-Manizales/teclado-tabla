@@ -1,0 +1,22 @@
+/* Estilos para InfoAtajosTeclado */
+.atajos-container {
+    margin-top: 32px;
+    font-size: 18px;
+  }
+  
+  .atajos-container p {
+    margin: 8px 0;
+  }
+  
+  .key {
+    background-color: #1a428a;
+    border: 1px solid #e9be6c;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.2);
+    display: inline-block;
+    font-family: monospace;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1;
+    padding: 3px 5px;
+  }

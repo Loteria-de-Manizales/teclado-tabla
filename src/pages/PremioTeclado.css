@@ -1,0 +1,96 @@
+/* Estilos para PremioActual */
+.premio-actual-container {
+  margin-top: 10px;
+  text-align: center;
+  padding: 0 40px; /* Añadido padding para centrar los inputs */
+}
+
+.premio-titulo {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  padding: 0 2px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 5px;
+}
+
+.grid-header {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.grid-inputs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: nowrap;
+  padding: 0 40px; /* Añadido padding para centrar los inputs */
+}
+
+.input-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: nowrap;
+}
+
+.input-circle {
+  width: clamp(60px, 12vw, 90px);
+  height: clamp(60px, 12vw, 90px);
+  text-align: center;
+  border: 4px solid #e9be6c;
+  border-radius: 50% !important;
+  background-color: white;
+  color: #1a428a;
+  font-size: clamp(24px, 4vw, 36px);
+  font-weight: bold;
+  caret-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .input-circle {
+      width: clamp(80px, 14vw, 110px);
+      height: clamp(80px, 14vw, 110px);
+      font-size: clamp(28px, 4vw, 42px);
+  }
+}
+
+@media (min-width: 768px) {
+  .premio-titulo {
+      font-size: 50px;
+  }
+  .input-circle {
+      width: clamp(100px, 16vw, 130px);
+      height: clamp(100px, 16vw, 130px);
+      font-size: clamp(32px, 5vw, 48px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .input-circle {
+      width: clamp(120px, 18vw, 150px);
+      height: clamp(120px, 18vw, 150px);
+      font-size: clamp(36px, 6vw, 52px);
+  }
+}
+
+@media (min-width: 1280px) {
+  .input-circle {
+      width: clamp(160px, 24vw, 200px);
+      height: clamp(160px, 24vw, 200px);
+      font-size: clamp(50px, 10vw, 80px);
+      border-width: 8px;
+  }
+}
