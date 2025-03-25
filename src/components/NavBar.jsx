@@ -19,6 +19,7 @@ function NavBar() {
         </button>
         <div className={`navbar-links ${menuOpen ? "open" : ""}`}>
           <Link to="/premio-teclado"><FaKeyboard size={24} /></Link>
+          <Link to="/premios-sorteados"><FaListUl size={24} /></Link>
           <Link to="/atajos-teclado"><FaLightbulb size={24} /></Link>
         </div>
         {/* <FaUserCircle size={32} className="user-icon" /> */}

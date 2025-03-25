@@ -1,0 +1,91 @@
+/* Estilos para PremiosSorteados */
+.premios-sorteados-container {
+    margin-top: 8px;
+    text-align: center;
+  }
+  
+  .premios-titulo {
+    font-size: 36px;
+    margin-bottom: 8px;
+  }
+  
+  .table-container {
+    overflow-x: auto;
+  }
+  
+  .premios-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #e9be6c;
+  }
+  
+  .table-header {
+    background-color: #e9be6c;
+    color: #1a428a;
+  }
+  
+  .table-cell {
+    border: 1px solid #e9be6c;
+    padding: 8px;
+    font-size: 20px;
+  }
+  
+  .table-header-cell {
+    border: 1px solid #e9be6c;
+    padding: 8px;
+    font-size: 20px;
+  }
+  
+  .value-cell {
+    font-size: 18px;
+  }
+  
+  @media (min-width: 640px) {
+    .premios-sorteados-container {
+      margin-top: 12px;
+    }
+    
+    .premios-titulo {
+      font-size: 48px;
+      margin-bottom: 12px;
+    }
+    
+    .table-cell, .table-header-cell {
+      padding: 12px;
+      font-size: 24px;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .premios-sorteados-container {
+      margin-top: 16px;
+    }
+    
+    .premios-titulo {
+      font-size: 60px;
+      margin-bottom: 16px;
+    }
+    
+    .table-cell, .table-header-cell {
+      padding: 16px;
+      font-size: 32px;
+    }
+    
+    .value-cell {
+      font-size: 20px;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .premios-titulo {
+      font-size: 72px;
+    }
+    
+    .table-cell, .table-header-cell {
+      font-size: 40px;
+    }
+    
+    .value-cell {
+      font-size: 24px;
+    }
+  }
